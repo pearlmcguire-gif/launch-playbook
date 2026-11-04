@@ -69,7 +69,7 @@ nav.top a{text-decoration:none;font-size:.9rem;font-weight:500}
 .story details{grid-column:1/-1;border-top:1px solid var(--line);padding-top:12px}
 .story summary{cursor:pointer;color:var(--accent);font-weight:500;font-size:.92rem}
 .full{display:grid;gap:12px;margin-top:12px;max-width:68ch;line-height:1.65}
-.also{border-left:3px solid var(--lav);padding-left:16px;margin-top:28px;display:grid;gap:6px}
+.also{border-left:3px solid var(--lav);padding-left:16px;margin-top:28px}
 /* journey */
 .strip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:20px}
 @media (max-width:760px){.strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -89,7 +89,15 @@ nav.top a{text-decoration:none;font-size:.9rem;font-weight:500}
 .field h4{margin:0 0 4px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .field ul{margin:0;padding-left:18px}
 .field li{margin-bottom:3px}
-.talk{grid-column:1/-1;border:1px solid var(--lav);border-radius:10px;padding:14px 16px}
+.talk{border:1px solid var(--lav);border-radius:10px;padding:16px 18px;display:grid;gap:12px;margin-top:12px}
+.lbl{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;font-style:normal;color:var(--muted);margin-bottom:2px}
+.goal1{font-size:1.02rem}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 24px;margin-top:16px}
+@media (max-width:760px){.grid3{grid-template-columns:minmax(0,1fr)}}
+.grid3>*{min-width:0}
+.ask1{margin-top:14px}
+.more summary{cursor:pointer;color:var(--accent);font-weight:500;font-size:.92rem}
+.more .grid2{margin-top:12px}
 .talk .hes{font-size:.92rem;margin-bottom:6px}
 .talk blockquote{margin:0;font-size:1.02rem;font-style:italic}
 .ask{grid-column:1/-1;font-size:.95rem}
@@ -199,280 +207,1064 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:.82rem
 
 <nav class="top"><div class="wrap">
   <b>Prepared for Fulcrum</b>
-  <a href="#stories">Stories</a><a href="#journey">Launch</a><a href="#workload">Workload</a><a href="#board">Board</a><a href="#terms">Terms</a>
+  <a href="#stories">Stories</a><a href="#journey">Launch</a><a href="#workload">Organized</a><a href="#board">Board</a>
 </div></nav>
 
 <main class="wrap">
 <section class="hero">
   <div class="eyebrow">Prepared for Fulcrum's Launch team</div>
   <h1>From handoff to first results</h1>
-  <p class="lede">Three stories about how I work, then how I'd run a Fulcrum launch: the stages, where shop owners are likely to hesitate, and what I'd say when they do.</p>
-  <p class="muted" style="margin-top:10px">Pearl McGuire · Customer Success and implementation · <a href="https://www.linkedin.com/in/pearlmcguire" target="_blank" rel="noopener">LinkedIn</a></p>
+  <p class="lede">I'm Pearl McGuire, a Customer Success and implementation manager. This page shows four times I solved a problem for a client or team, and how I'd run launches at Fulcrum.</p>
+  <p class="muted" style="margin-top:10px"><a href="https://www.linkedin.com/in/pearlmcguire" target="_blank" rel="noopener">LinkedIn</a></p>
   <div class="teasers">
-    <a class="teaser" href="#s-malls"><span class="kind">Rolled up my sleeves</span><b>Seven malls, one date that couldn't move</b><span>Prioritized the urgent malls and got the flagship live on time.</span><em>Read the story</em></a>
-    <a class="teaser" href="#s-bot"><span class="kind">Rolled up my sleeves</span><b>Answers around the clock</b><span>Built an AI Help Center bot: 40% of inquiries resolved, 60% fewer second-tier escalations.</span><em>Read the story</em></a>
-    <a class="teaser" href="#s-change"><span class="kind">When a client didn't want to change</span><b>Moving a happy client to something new</b><span>Took the work off their plate, and they chose the new platform.</span><em>Read the story</em></a>
+    <a class="teaser" href="#s-malls"><span class="kind">Rolled up my sleeves</span><b>Seven malls, one fixed date</b><span>Rolled out mapping across seven malls for a date that couldn't move. The flagship mall went live on time.</span></a>
+    <a class="teaser" href="#s-bot"><span class="kind">Rolled up my sleeves</span><b>Answers around the clock</b><span>Built an AI help bot so clients in every time zone could get answers. It resolved 40% of inquiries.</span></a>
+    <a class="teaser" href="#s-change"><span class="kind">A client who didn't want to change</span><b>Moving a hesitant client</b><span>Did the setup work for a client who didn't want to switch platforms. They switched.</span></a>
   </div>
-  <div class="layers muted"><span>Also on this page:</span><a href="#journey">The Launch journey, 2-5 min</a><a href="#workload">How I'd run a full launch load</a><a href="#board">A Launch board to try</a><a href="#terms">Terms I'm learning</a></div>
 </section>
 
 <section id="stories">
   <div class="eyebrow">How I work</div>
   <h2>Four stories</h2>
-  <p class="muted" style="margin-top:6px">The short version of each is below. Open any story for the details.</p>
   <div class="stories">
-<article class="story" id="s-malls">
-      <div class="shead"><span class="kind">Rolled up my sleeves</span><h3>Seven malls, one date that couldn't move</h3><span class="co">MappedIn, an indoor mapping platform · implementation owner</span></div>
-      <ul class="beats"><li><span class="beat">Challenge</span>A seven-mall rollout tied to a celebration date, with no extensions.</li><li><span class="beat">What I did</span>Put the two to three most urgent malls first, and ran the client's team and three of ours.</li><li><span class="beat">Result</span>The flagship mall went live on time.</li></ul>
-      <details><summary>Read the full story</summary><div class="full"><p>A major mall operator in Thailand was rolling out MappedIn across seven malls, timed to a big celebration at its largest mall.</p><p>The client had very specific needs, many beyond what the product did at the time: a long list of feature requests, and late-night and early-morning calls.</p><p>I worked with the client's project manager and their 5-7 person team, while coordinating our Solutions, Data and Development teams. When Development needed details on the data-imports API that I couldn't give them, I brought the Data team into those calls directly.</p><p>A mock preview also reached the client company's President early.</p></div></details>
+    <article class="story" id="s-malls">
+      <div class="shead"><span class="kind">Rolled up my sleeves</span><h3>Seven malls, one fixed date</h3><span class="co">MappedIn, indoor maps for malls and airports · implementation owner (contractor)</span></div>
+      <ul class="beats"><li><span class="beat">Situation</span>A major mall operator in Thailand was rolling out MappedIn maps across seven malls, timed to a big celebration at its largest mall. The date couldn't move.</li><li><span class="beat">Challenge</span>The client wanted many features the product didn't have yet, and calls ran late at night and early in the morning.</li><li><span class="beat">What I did</span>I launched the two or three most urgent malls first, and ran the project with the client's 5-7 person team and our Solutions, Data and Development teams. When Development needed data-import details I couldn't give, I brought the Data team straight into those calls.</li><li><span class="beat">Result</span>The flagship mall went live on time, and the client's President saw an early preview.</li></ul>
     </article>
-<article class="story" id="s-bot">
-      <div class="shead"><span class="kind">Rolled up my sleeves</span><h3>Answers around the clock</h3><span class="co">Eptura (formerly Proxyclick), a visitor management platform · Customer Success</span></div>
-      <ul class="beats"><li><span class="beat">Challenge</span>Support covered Europe and US hours. Asia-Pacific clients were mostly on their own.</li><li><span class="beat">What I did</span>Built an AI Help Center bot in Intercom, plus a macro library for the support team.</li><li><span class="beat">Result</span>40% of inquiries resolved through chat and self-service, and 60% fewer second-tier escalations.</li></ul>
-      <details><summary>Read the full story</summary><div class="full"><p>I researched the questions clients asked most, then wrote the bot's content and the macro templates that suggested articles automatically.</p><p>The bot walked clients through step-by-step fixes, helped them troubleshoot, and sent them to the right article or video.</p><p>Asia-Pacific clients had answers across almost all of the hours our team didn't cover. The project led to me owning all Help Center and academy content.</p></div></details>
+    <article class="story" id="s-bot">
+      <div class="shead"><span class="kind">Rolled up my sleeves</span><h3>Answers around the clock</h3><span class="co">Eptura (formerly Proxyclick), visitor check-in software · Customer Success</span></div>
+      <ul class="beats"><li><span class="beat">Situation</span>Our support team worked European and US hours. Clients in Asia-Pacific had almost no live help during their workday.</li><li><span class="beat">What I did</span>I built an AI Help Center bot in Intercom from scratch, based on the questions clients asked most. It walked clients through fixes step by step and sent them to the right article or video. I also built a macro and prompt library for the support team.</li><li><span class="beat">Result</span>40% of inquiries were resolved through the chat and self-service, and second-tier escalations dropped 60%. Asia-Pacific clients could get answers at almost any hour, and I went on to own all Help Center and academy content.</li></ul>
     </article>
-<article class="story" id="s-change">
-      <div class="shead"><span class="kind">When a client didn't want to change</span><h3>Moving a happy client to something new</h3><span class="co">MappedIn · self-serve platform launch</span></div>
-      <ul class="beats"><li><span class="beat">Challenge</span>A client on our older system didn't want the work of switching, and budgets were under review.</li><li><span class="beat">What I did</span>Built their map and setup in advance, gave them access, and made a demo for their leadership.</li><li><span class="beat">Result</span>They moved to self-serve, which fit their changed budget.</li></ul>
-      <details><summary>Read the full story</summary><div class="full"><p>Our VP asked me to step in on the self-serve launch. This client ran a single-level outdoor outlet mall. Not the ideal customer profile, but they liked the product.</p><p>Getting them on a call took a while. On budget, we were clear that staying on the older setup would keep costing more over time.</p><p>When they found missing features, I took the requests to Product. They chose the new map even without the exact same feature set, because it covered what they needed.</p><p>It also let them map beyond their property line, adding parking, driveways and directions from the highway as construction at the far end of their lot went up.</p></div></details>
+    <article class="story" id="s-change">
+      <div class="shead"><span class="kind">A client who didn't want to change</span><h3>Moving a hesitant client to a new platform</h3><span class="co">MappedIn · self-serve platform launch (contractor)</span></div>
+      <ul class="beats"><li><span class="beat">Situation</span>MappedIn launched a lower-cost, self-serve version of its maps, and our VP asked me to help move clients onto it.</li><li><span class="beat">Why they hesitated</span>One client, an outdoor outlet mall on our older Enterprise system, didn't want the work of switching, and their budgets were under review.</li><li><span class="beat">What I did</span>I built their map and set up their location on the new platform myself, so they could try it right away. I made a demo for their marketing and leadership teams, was clear that staying on the old setup would keep costing more, and took their missing-feature requests to Product.</li><li><span class="beat">Result</span>They switched. The lower tier fit their changed budget, and the new map let them add parking and highway directions as construction on their lot went up.</li></ul>
     </article>
-<article class="story" id="s-train">
-      <div class="shead"><span class="kind">Teaching a client</span><h3>The training gap behind a complaint</h3><span class="co">Pathmonk, a website lead-conversion platform · sole Customer Success hire</span></div>
-      <ul class="beats"><li><span class="beat">Challenge</span>A client said their lead results were dropping.</li><li><span class="beat">What I found</span>Nobody had taught them to read their dashboard or calculate their return on investment.</li><li><span class="beat">Result</span>After two to three months of follow-ups, they could read their own results.</li></ul>
-      <details><summary>Read the full story</summary><div class="full"><p>They mentioned it in an unrelated email about updating their content.</p><p>Their content was mid-update, so instead of anchoring to an outdated baseline, we set new benchmarks together and I followed up on a set schedule.</p></div></details>
+    <article class="story" id="s-train">
+      <div class="shead"><span class="kind">Teaching a client</span><h3>The training gap behind a complaint</h3><span class="co">Pathmonk, a website lead-conversion platform · sole Customer Success hire (contractor)</span></div>
+      <ul class="beats"><li><span class="beat">Situation</span>A client mentioned, in an email about something else, that their lead results were dropping.</li><li><span class="beat">What I found</span>Nobody had shown them how to read their dashboard or calculate their return on investment. It was a training gap, not a results problem.</li><li><span class="beat">What I did</span>Their content was being updated, so instead of comparing against old numbers, we set new benchmarks together. I followed up on a set schedule for two to three months.</li><li><span class="beat">Result</span>They could read and interpret their dashboard on their own.</li></ul>
     </article>
   </div>
-  <div class="also">
-    <h3>And one I didn't let go of</h3>
-    <p>At MappedIn I inherited an account flagged as challenging because its contacts weren't engaging. Within the first quarter I'd found the real decision-maker, and two expansion conversations opened.</p>
-  </div>
+  <p class="also"><b>Also at MappedIn:</b> I inherited an account flagged as difficult because its contacts didn't engage. I found that the main contact wasn't the decision-maker, reached the real one within a quarter, and two expansion conversations opened.</p>
 </section>
 
 <section id="journey">
   <div class="eyebrow">How I'd run a Fulcrum launch</div>
-  <h2>Six stages, and where owners hesitate</h2>
-  <p style="margin-top:8px">The middle four are Fulcrum's published Launch phases. Handoff, Refine and the handoff to Account Management are my proposal. Each card includes the moment I'd expect a shop owner to push back, and what I'd say. These are hypotheses from fulcrumpro.com and public reviews, and the first thing I'd check with your team.</p>
+  <h2>Where owners hesitate, and what I'd say</h2>
+  <p style="margin-top:8px">Fulcrum's Launch team takes each new customer from signed contract to running live. Below are Launch's four published phases (shaded) and the steps I'd add around them. Each card shows the goal, a moment when a shop owner might push back, and what I'd say. Pick a stage.</p>
   <div class="strip" id="strip"></div>
-  <p class="legend">Shaded: Fulcrum's Launch phases. Unshaded: my proposed stages.</p>
   <div id="stageCard"></div>
-  <div class="cardfoot" style="justify-content:flex-start"><button class="btn" id="showAll" type="button">Show every stage</button></div>
-  <div id="allCards" hidden></div>
   <div class="threads">
-    <div class="thread"><h3>A feedback and expansion log, from day one</h3><p>Feature requests, custom tool ideas, modules held for later and anything Marketing should hear go into one log that travels with the shop. Product requests carry a status the shop can see. Not every request needs to land in the next sprint, but every request deserves a customer who knows where it stands.</p></div>
-    <div class="thread"><h3>A "what's new since kickoff" note at every stage</h3><p>Fulcrum ships often, so the product at go-live can be ahead of the one the shop saw in the demo. A short note at each stage keeps the owner looking forward, and turns new releases into reasons to try something instead of surprises.</p></div>
+    <div class="thread"><h3>One feedback log per shop</h3><p>Every request, idea and module held for later goes in one log, with a status the shop can see. Nothing gets lost, and the Account Manager inherits a ready list.</p></div>
+    <div class="thread"><h3>"What's new since kickoff"</h3><p>Fulcrum releases often. A short note at each stage tells the shop what's new, so updates become reasons to try something instead of surprises.</p></div>
   </div>
 </section>
 
 <section id="workload">
-  <div class="eyebrow">How I'd stay on top of it</div>
-  <h2>Running a full launch load</h2>
-  <p style="margin-top:8px">With shops at every stage at once, the job is making sure none of them slips. Here's how I'd run my week. It's my plan, not a description of Fulcrum's process, and I'd shape it around how your team already works.</p>
+  <div class="eyebrow">Staying organized</div>
+  <h2>Running many launches at once</h2>
+  <p style="margin-top:8px">How I'd keep many launches moving without anything slipping. It's my plan, and I'd adapt it to how your team works.</p>
   <div class="load">
-    <div class="col"><h3>A weekly rhythm</h3>
+    <div class="col"><h3>Weekly rhythm</h3>
       <dl class="rhythm">
-        <div><dt>Monday</dt><dd>Rank every shop on the board, block time for the top three, and confirm this week's deadlines with each shop.</dd></div>
-        <div><dt>Every day</dt><dd>Prep before each call. Log follow-ups and requests the same day. Reproduce setup issues before they go to Engineering.</dd></div>
-        <div><dt>Every week</dt><dd>A health check on every shop, with more check-ins during early rollout, when problems are most likely to show up.</dd></div>
-        <div><dt>Thursday</dt><dd>Update every launch summary and the feedback log, send Product the week's requests, and flag anything still open, so Friday is for wrapping it up.</dd></div>
+        <div><dt>Monday</dt><dd>Rank shops on the board. Confirm the week's deadlines.</dd></div>
+        <div><dt>Daily</dt><dd>Prep before calls. Log follow-ups the same day.</dd></div>
+        <div><dt>Weekly</dt><dd>Health check on every shop, more during early rollout.</dd></div>
+        <div><dt>Thursday</dt><dd>Update summaries and the feedback log, so Friday wraps up.</dd></div>
       </dl>
-      <p class="muted small">Anything an owner will review is ready two days ahead, so there's time to fix a number at its source.</p>
     </div>
     <div class="col"><h3>One place per shop</h3>
-      <p>Each shop gets one home: the launch summary (goals, baselines, who's who, dates), the feedback and expansion log, and the "what's new since kickoff" note.</p>
-      <p>Anyone on the team can pick up a shop mid-launch without a briefing call, and the Account Manager inherits the full story.</p>
+      <p>Each shop's goals, contacts, dates, feedback log and what's-new notes live in one launch summary.</p>
+      <p>Anyone on the team can pick up a shop mid-launch without a briefing call.</p>
     </div>
-    <div class="col"><h3>What I'd automate first, with Claude</h3>
+    <div class="col"><h3>What I'd automate with Claude</h3>
       <ul>
-        <li>Call notes that draft an update to the launch summary, for me to review</li>
-        <li>Requests filed into the feedback log, tagged by type, shop and urgency</li>
-        <li>A draft "what's new since kickoff" note for each shop, built from release notes</li>
-        <li>Over time, simple queries that pull launch data straight into the board</li>
+        <li>Turn call notes into a draft update of the launch summary</li>
+        <li>File requests into the feedback log, tagged by type and urgency</li>
+        <li>Draft each shop's "what's new" note from release notes</li>
+        <li>Later, use simple queries to fill the board with live data</li>
       </ul>
-      <p class="muted small">Ideas to check with the team first. Each one hands time back to calls and building.</p>
+      <p class="muted small">Ideas to check with the team first.</p>
     </div>
   </div>
   <div class="built"><h3>Things I've built</h3>
     <div class="bgrid">
-      <a href="https://pearlmcguire-gif.github.io/account-journey-dashboard" target="_blank" rel="noopener"><b>Account Journey Score demo</b><span>Scores account risk and value from the first discovery call onward, with adjustable weights. Live.</span></a>
-      <div><b>Voice of the Customer digest agent</b><span>Built with Bolter and Claude. Compiles tickets, feedback, open requests and roadmap statuses into one weekly digest for the product team, so time goes to review instead of compiling.</span></div>
-      <div><b>This page</b><span>Built with Claude, including the Launch board, its weekly triage and the terms practice mode.</span></div>
+      <a href="https://pearlmcguire-gif.github.io/account-journey-dashboard" target="_blank" rel="noopener"><b>Account Journey Score</b><span>A live demo that scores each account's risk and value from the first sales call, with adjustable weights.</span></a>
+      <div><b>Voice of the Customer digest agent</b><span>An AI agent (Bolter and Claude) that turns a week of tickets, feedback and requests into one digest for the product team.</span></div>
+      <div><b>This page</b><span>Built with Claude, including the board and its weekly ranking.</span></div>
     </div>
   </div>
 </section>
 
 <section id="board">
   <div class="eyebrow">Try it (optional)</div>
-  <h2>My Monday view: a Launch board</h2>
-  <p style="margin-top:8px">A Launch version of my <a href="https://pearlmcguire-gif.github.io/account-journey-dashboard" target="_blank" rel="noopener">Account Journey Score demo</a>. Eight fictional shops, each scored on five things at every stage they've reached. The "This week" list ranks who gets time first, based on the scores, flags and the next deadline. Move the sliders to change what matters most. The criteria and scoring guides stay off the page; the question behind each score is here.</p>
+  <h2>My Monday view</h2>
+  <p style="margin-top:8px">A working example of how I'd track many launches at once. Eight fictional shops are scored 1-5 on five things at each stage they've reached. "This week, first" ranks which shops need time now. Move the sliders to change what matters most, or click a shop for details. It's based on my <a href="https://pearlmcguire-gif.github.io/account-journey-dashboard" target="_blank" rel="noopener">Account Journey Score demo</a>.</p>
   <div class="controls">
-    <div class="panel"><h3>How much each score matters</h3><div id="weights"></div><button class="btn" id="resetW" type="button" style="margin-top:6px">Reset to equal weights</button></div>
-    <div class="panel tri"><h3>This week, first</h3><ol id="triage"></ol></div>
+    <div class="panel"><h3>What matters most</h3><div id="weights"></div><button class="btn" id="resetW" type="button" style="margin-top:6px">Reset to equal weights</button></div>
+    <div class="panel tri"><h3>This week, first</h3><p class="muted small" style="margin-bottom:8px">Ranked by low scores, warning flags and the nearest deadline.</p><ol id="triage"></ol></div>
   </div>
   <div class="dashhead"><b id="portCount">Shops</b>
-    <label>Sort <select id="sort"><option value="att">Needs attention first</option><option value="due">Next deadline first</option><option value="stg">Launch stage</option></select></label></div>
+    <label>Sort <select id="sort"><option value="att">Lowest score first</option><option value="due">Next deadline first</option><option value="stg">Launch stage</option></select></label></div>
+  <p class="muted small" style="margin-bottom:10px">A shop's score is the weighted average of its five scores at its latest stage. Strong: 4 or higher. Steady: 3 to 3.9. Needs attention: below 3.</p>
   <div class="port" id="port"></div>
   <div id="detail"></div>
 </section>
 
-<section id="terms">
-  <div class="eyebrow">Terms I'm learning</div>
-  <h2>Learning the language of the shop floor</h2>
-  <p style="margin-top:8px">Every term below came from Fulcrum's site or the public reviews I read. The definitions are in my own words, each linked to where I learned it. I built the practice mode for myself; you're welcome to quiz me.</p>
-  <div class="gtools">
-    <button class="btn" id="modeCards" type="button" aria-pressed="true">Flashcards</button>
-    <button class="btn" id="modeQuiz" type="button" aria-pressed="false">Quiz me</button>
-    <span class="muted" id="known" style="font-size:.9rem"></span>
-  </div>
-  <div id="cards" class="cards"></div>
-  <div id="quiz" class="quiz" hidden></div>
-  <div style="margin-top:40px" class="stack">
-    <div class="eyebrow">What I'd validate with your team first</div>
-    <h3 style="font-size:1.35rem">This page is a set of hypotheses</h3>
-    <ol class="learn">
-      <li>How a Sales handoff reaches a Launch Manager, and what gets read first.</li>
-      <li>How Launch Managers decide which shop gets time first in a busy week.</li>
-      <li>Which setup issues come up most, and how they reach Engineering.</li>
-      <li>How customer feedback reaches Product and Marketing.</li>
-      <li>What a typical launch timeline looks like for a small shop versus a medium one.</li>
-    </ol>
-  </div>
+<section id="check">
+  <h2>What I'd check with your team first</h2>
+  <p style="margin-top:8px">I built this page from Fulcrum's website and public reviews, so these are the first things I'd confirm:</p>
+  <ol class="learn">
+    <li>How a new customer moves from Sales to Launch, and what Launch reads first.</li>
+    <li>How Launch Managers decide which shop gets time first in a busy week.</li>
+    <li>Which setup issues come up most, and how they reach Engineering.</li>
+    <li>How feedback reaches Product and Marketing.</li>
+    <li>How long a typical launch takes for a small shop versus a medium one.</li>
+  </ol>
 </section>
 </main>
 
 <footer><div class="wrap">
-  All shops, people and figures on the Launch board are fictional. Fulcrum's Launch phase and module names come from fulcrumpro.com; the stages around them are my proposal. Built by Pearl McGuire with Claude. Account Journey Score concept and framework © 2026 Pearl McGuire. This page uses PostHog, without cookies, to count which parts get used.
+  Shops and figures on the board are fictional. Fulcrum phase names are from fulcrumpro.com. Built by Pearl McGuire with Claude. Account Journey Score © 2026 Pearl McGuire. This page uses PostHog, without cookies, to count which parts get used.
 </div></footer>
 
 <!-- Content and sample data live here, apart from the layout, so real records can replace them later -->
 <script type="application/json" id="data">
 {
-"stages":[
- {"id":"handoff","f":false,"name":"Sales handoff","src":"Proposed","goal":"Launch starts with the shop's goals already written down, so nobody has to rediscover them.",
-  "owners":["Account Executive","Launch Manager"],
-  "hands":["The shop's top three goals, each with a starting number","Who signs, who runs the floor, who owns the data","Modules sold, and modules discussed but held for later"],
-  "watch":["Goals described only as \"get off spreadsheets\"","One contact for everything"],
-  "hes":"\"We already told your salesperson all of this.\"",
-  "say":"Yes, you did, and I've gone through it. I just want to be sure nothing has changed since those conversations. Now that we're a little further into the process, I'd like to realign so we're still working toward the same goals.",
-  "ask":"If this goes perfectly, what will be different on the floor in six months?"},
- {"id":"define","f":true,"name":"Define","src":"Fulcrum Launch phase: align on goals, learn how the shop runs, configure the foundation","goal":"Agree on what success looks like, and how the shop really works today.",
-  "owners":["Launch Manager","Shop's project owner"],
-  "hands":["Success measures with baselines","How a job moves today, from quote to shipped","A named owner on the shop's side, with time set aside"],
-  "watch":["No named owner with time for the project","Goals that change from call to call"],
-  "hes":"The owner wants Fulcrum set up to copy today's process exactly, workarounds included.",
-  "say":"It's your shop, and you know it better than I do. If we rebuild the old workaround in Fulcrum, though, the same delays will follow you into the new system. Can we try the simpler way on one job first?",
-  "ask":"Walk me through one job from quote to shipped. Where does it slow down?"},
- {"id":"build","f":true,"name":"Build","src":"Fulcrum Launch phase: migrate and validate core data, build key workflows","goal":"Clean, structured data in Fulcrum, and the most important workflows built.",
-  "owners":["Launch Manager","Shop's data owner"],
-  "hands":["Validated bills of materials (BOMs), routings and inventory","A list of workflows built, and ones deferred"],
-  "watch":["Data prep running behind plan (public reviews mention restructuring flat BOMs taking real time)","One person doing all the data work"],
-  "hes":"\"Let's load the data as it is and clean it up later.\"",
-  "say":"That's your call. If the BOMs go in flat, your job costs will still be off after go-live, and that's the number you told me matters most. I'll sit with whoever knows the routings best and we'll do it together.",
-  "ask":"Which part of your data do you trust least?"},
- {"id":"validate","f":true,"name":"Validate","src":"Fulcrum Launch phase: test real scenarios, connect integrations, day-in-the-life runs","goal":"The shop proves the system works on its own real jobs.",
-  "owners":["Launch Manager","Shop floor leads","Engineering, for setup issues"],
-  "hands":["Day-in-the-life test results","Integrations confirmed (accounting, shipping, sales tools)","Setup issues sent to Engineering already reproduced, with steps, screenshots or video, browser and device"],
-  "watch":["Testing done by managers only, not the people running jobs","Accounting integration questions left open (a theme in public reviews)"],
-  "hes":"Managers want to test it themselves and keep the floor focused on production.",
-  "say":"I understand protecting the floor's time. If the people running the jobs don't test it now, we'll find their problems after go-live, when they cost more to fix. Two people, one afternoon.",
-  "ask":"Which job would you be nervous to run through the system first? Let's test that one."},
- {"id":"launch","f":true,"name":"Launch","src":"Fulcrum Launch phase: role-based training, go-live support","goal":"Everyone trained for their role, and the shop running live.",
-  "owners":["Launch Manager","Support","Account Manager (introduced)"],
-  "hands":["Training by role, including how to read the shop's own results","A launch summary: goals, baselines, who's who, open requests, the feedback log"],
-  "watch":["Spreadsheets kept running alongside \"just in case\"","Training gaps for one specific role"],
-  "hes":"\"We'll keep the spreadsheet going for a while, just to be safe.\"",
-  "say":"Keep it for a week if it helps. After that, two systems means two answers, and nobody trusts either one. Let's pick the date the spreadsheet retires.",
-  "ask":"What's still living in a spreadsheet, and why?"},
- {"id":"refine","f":false,"name":"Refine","src":"Proposed","goal":"Fine-tune what's live, and show the first results against the baseline.",
-  "owners":["Launch Manager","Account Manager","Support"],
-  "hands":["First results compared with the baseline","Adoption by role","Refined workflows"],
-  "watch":["Usage going up with no measured result yet","Questions only ever going to Support"],
-  "hes":"\"Everything's working, we don't need more check-ins.\"",
-  "say":"Glad to hear it. Give me 20 minutes to check your first results against where you started, so you have the proof ready when someone asks whether it was worth it.",
-  "ask":"Which number from the start should we check together now?"},
- {"id":"am","f":false,"name":"To Account Management","src":"Proposed","goal":"A warm handoff, so the shop never has to start over.",
-  "owners":["Launch Manager","Account Manager"],
-  "hands":["The launch summary and the feedback and expansion log","An introduction while Launch is still involved"],
-  "watch":["The Account Manager meeting the shop for the first time after Launch steps away"],
-  "hes":"\"We just got used to working with our Launch Manager.\"",
-  "say":"You're not losing anyone. I'll bring your Account Manager in while we're still working together, so they already know your goals and your shop.",
-  "ask":"Who on your side should the Account Manager meet first?"}
-],
-"dims":[
- {"n":"Value","def":"A measurable goal, a benchmark, and evidence the shop is reaching it. Usage alone doesn't count.","q":"What will the shop measure in six months, and against what starting number?"},
- {"n":"Alignment","def":"Sales and Launch working from the same understanding of the shop's goals.","q":"Could Launch name the shop's top three goals before kickoff, without asking sales?"},
- {"n":"Readiness","def":"Both sides ready: setup for the shop's own use, a named owner, data and integrations on schedule.","q":"Is there a named owner on the shop's side, and is the data ready for Build?"},
- {"n":"Relationship","def":"How many contacts are established, at which levels: a champion with a backup, an executive sponsor.","q":"Besides our champion, who would pick up the phone?"},
- {"n":"Stability","def":"Changes at the shop that could change the picture: people leaving, restructuring, budget freezes.","q":"What's changing at the shop this year: people, customers, machines, systems?"}
-],
-"shops":[
- {"n":"Ridgeline Precision","i":"CNC machine shop","st":5,"due":12,"ms":"First-results review","s":[[4,4,4,3,4],[4,5,4,4,4],[5,4,5,4,4],[5,4,5,4,4],[5,4,4,4,4],[5,4,4,4,4]],
-  "goals":[["On-time delivery","78%","92%","90%"],["Jobs with actual cost captured","Estimates only","100%","96%"]],
-  "flags":[["pos","Named project owner from the first Define call"],["pos","Asked about Quality Control in Define; held for later"]],
-  "log":[["Quality Control module","Held at Define"],["Weekly owner report (Archie Builder idea)","Raised in training"]],
-  "next":[["Launch Manager","Review on-time delivery with the owner against the 78% baseline"],["Account Manager","Join the review and take over the feedback log"]],
-  "ser":{"u":[20,45,60,68,72,75],"v":[10,30,50,62,70,78]}},
- {"n":"Copperleaf Fabrication","i":"Sheet metal fabricator","st":5,"due":30,"ms":"Handoff to Account Management","s":[[4,5,4,4,4],[5,5,4,4,4],[5,5,5,4,4],[5,4,5,5,4],[5,5,5,5,5],[5,5,5,5,5]],
-  "goals":[["Quote turnaround","3 days","1 day","Same day"],["On-time delivery","82%","95%","96%"]],
-  "flags":[["pos","Owner asked about bringing a second building onto Fulcrum"],["pos","A feature the shop requested shipped and is in use"]],
-  "log":[["Second building","Raised at Refine"],["Grouped Work for nesting","Live since Launch"]],
-  "next":[["Launch Manager","Introduce the Account Manager with the results summary"],["Marketing","Ask the owner about a customer story"]],
-  "ser":{"u":[25,50,65,75,80,85],"v":[15,40,60,75,85,92]}},
- {"n":"Basin Street Machining","i":"CNC machine shop","st":2,"due":4,"ms":"Data upload deadline","s":[[3,3,2,2,4],[3,3,2,2,4],[3,3,2,2,4]],
-  "goals":[["On-time delivery","Not measured yet","Set at Define","Baseline pending"]],
-  "flags":[["warn","BOMs are flat and need restructuring before Build can finish"],["warn","The owner is also the project owner and runs the floor"]],
-  "log":[["Purchase Planning","Mentioned in sales"]],
-  "next":[["Launch Manager","Offer a data prep working session with whoever knows the routings best"],["Account Executive","Confirm the goals from sales with the owner"]],
-  "ser":{"u":[5,12,15,0,0,0],"v":[0,5,8,0,0,0]}},
- {"n":"Northfork Metalworks","i":"Sheet metal fabricator","st":3,"due":9,"ms":"Day-in-the-life test","s":[[4,4,4,2,4],[4,4,4,2,4],[4,4,4,2,4],[4,4,4,2,3]],
-  "goals":[["Jobs tracked live on the floor","Paper and spreadsheets","Every job","Pilot area only"]],
-  "flags":[["warn","One champion and no backup contact"],["warn","People on the floor haven't run a day-in-the-life test yet"]],
-  "log":[["Shipping integration","Asked about in Validate"]],
-  "next":[["Launch Manager","Run a day-in-the-life test with two people from the floor"],["Launch Manager","Ask the champion to introduce a backup before go-live"]],
-  "ser":{"u":[10,25,40,45,0,0],"v":[5,15,25,30,0,0]}},
- {"n":"Tallgrass Aerospace Components","i":"CNC machine shop, AS9100D","st":4,"due":6,"ms":"Go-live","s":[[4,4,4,4,4],[4,4,5,4,4],[4,4,5,4,4],[4,4,5,4,4],[4,4,4,3,2]],
-  "goals":[["Nonconformance reports closed on time","Not tracked","90%","Tracking started"]],
-  "flags":[["warn","The quality manager, a key contact, left last month"],["pos","Interested in nonconformance tracking in Quality Control"]],
-  "log":[["Quality Control: nonconformance tracking","Raised in Launch"]],
-  "next":[["Launch Manager","Train the new quality lead before go-live"],["Engineering","Confirm the integration fix from Validate is released"]],
-  "ser":{"u":[20,45,60,65,62,60],"v":[10,35,50,58,60,61]}},
- {"n":"Ironwood Tool and Die","i":"Machine shop","st":5,"due":20,"ms":"First-results review","s":[[2,3,4,4,4],[2,3,4,4,4],[2,4,5,4,4],[2,4,5,4,4],[2,4,4,4,4],[2,4,4,4,4]],
-  "goals":[["Job costing accuracy","No baseline set","Set at handoff","Can't be shown yet"]],
-  "flags":[["warn","Usage is high, but no baseline was set, so results can't be shown"],["info","The team likes the scheduling; value is still unproven to the owner"]],
-  "log":[["Demand Planning","Mentioned at Refine"]],
-  "next":[["Launch Manager","Rebuild a baseline from the shop's first month of job cost data"],["Product","Share the reporting request raised in training"]],
-  "ser":{"u":[30,60,80,88,92,95],"v":[10,15,20,22,25,26]}},
- {"n":"Silver Creek Fab","i":"Sheet metal fabricator","st":0,"due":5,"ms":"Kickoff","s":[[3,2,3,3,4]],
-  "goals":[["Top three goals","To confirm before kickoff","",""]],
-  "flags":[["warn","Goals not written down yet at the handoff"],["info","The shop mentioned ITAR work, so data access needs planning in Define"]],
-  "log":[["Quoting and Sales Orders","Discussed, held for later"]],
-  "next":[["Account Executive","Write down the top three goals with Launch before kickoff"],["Launch Manager","Plan access controls for ITAR work in Define"]],
-  "ser":{"u":[0,0,0,0,0,0],"v":[0,0,0,0,0,0]}},
- {"n":"Harbor Point Precision","i":"CNC machine shop","st":1,"due":15,"ms":"Define sign-off","s":[[4,4,3,3,4],[4,4,3,4,4]],
-  "goals":[["Shop-floor labor captured live","End-of-day timesheets","Every job","Not started"]],
-  "flags":[["warn","Accounting integration questions came up early"],["pos","Owner and shop manager both join every call"]],
-  "log":[["Custom shipping report","Raised in Define"]],
-  "next":[["Launch Manager","Map the accounting questions before Build starts"],["Support","Share the accounting integration guide with the bookkeeper"]],
-  "ser":{"u":[5,15,0,0,0,0],"v":[0,5,0,0,0,0]}}
-],
-"terms":[
- ["Job shop","A manufacturer that makes custom parts in small batches for many different customers, so almost every job is different.","https://www.cleverence.com/articles/for-business/what-is-job-shop-manufacturing-4827/"],
- ["CNC (computer numerical control)","Machine tools such as mills and lathes that run from programmed instructions instead of being operated by hand.","https://en.wikipedia.org/wiki/Numerical_control"],
- ["BOM (bill of materials)","The list of every raw material, part and sub-assembly needed to make a product, with quantities.","https://www.techtarget.com/enterprise-software/definition/What-is-a-bill-of-materials-BOM"],
- ["Multilevel BOM","A BOM set up as a tree, where each sub-assembly has its own components underneath it. A flat BOM lists everything on one level.","https://www.arenasolutions.com/resources/glossary/multilevel-bom/"],
- ["Routing","The ordered list of operations a part goes through, with the machine or work center and the time for each step.","https://katanamrp.com/blog/routing-manufacturing"],
- ["Nesting","Laying out parts on a sheet of material so as much of it is used as possible and less is wasted.","https://en.wikipedia.org/wiki/Nesting_(process)"],
- ["Job costing","Tracking the actual labor, material and overhead spent on each individual job, to see what it really cost.","https://en.wikipedia.org/wiki/Job_costing"],
- ["Capable-to-promise","Promising a delivery date based on whether materials and production capacity will actually be available, not only what's in stock.","https://www.planettogether.com/aps/capable-to-promise"],
- ["Nonconformance report","A record that a part or process didn't meet its requirements: what was found, and what's being done about it.","https://simplerqms.com/non-conformance-report/"],
- ["AS9100D","The quality management standard for aviation, space and defense organizations, built on ISO 9001.","https://saemobilus.sae.org/standards/as9100d-quality-management-systems-requirements-aviation-space-defense-organizations"],
- ["ITAR (International Traffic in Arms Regulations)","US rules that control the export of defense-related items and technical data, including who is allowed to access that data.","https://www.law.cornell.edu/wex/international_traffic_in_arms_regulations_%28itar%29"]
-]
+ "stages": [
+  {
+   "id": "handoff",
+   "f": false,
+   "name": "Sales handoff",
+   "src": "My addition",
+   "goal": "Start Launch with the shop's goals already written down.",
+   "owners": [
+    "Account Executive",
+    "Launch Manager"
+   ],
+   "hands": [
+    "Top three goals, each with a starting number",
+    "Who signs, runs the floor and owns the data",
+    "Modules sold, and modules held for later"
+   ],
+   "watch": [
+    "Vague goals like “get off spreadsheets”",
+    "One contact for everything"
+   ],
+   "hes": "“We already told your salesperson all of this.”",
+   "say": "Yes, you did, and I've gone through it. I just want to be sure nothing has changed since those conversations. Now that we're a little further into the process, I'd like to realign so we're still working toward the same goals.",
+   "ask": "If this goes perfectly, what changes on the floor in six months?"
+  },
+  {
+   "id": "define",
+   "f": true,
+   "name": "Define",
+   "src": "Fulcrum phase",
+   "goal": "Agree on success, and learn how the shop really works.",
+   "owners": [
+    "Launch Manager",
+    "Shop's project owner"
+   ],
+   "hands": [
+    "Success measures with baselines",
+    "How a job moves from quote to shipped",
+    "A named owner with time set aside"
+   ],
+   "watch": [
+    "No owner with time for the project",
+    "Goals that shift call to call"
+   ],
+   "hes": "The owner wants today's process copied exactly, workarounds included.",
+   "say": "It's your shop, and you know it better than I do. If we rebuild the old workaround in Fulcrum, though, the same delays will follow you into the new system. Can we try the simpler way on one job first?",
+   "ask": "Walk me through one job. Where does it slow down?"
+  },
+  {
+   "id": "build",
+   "f": true,
+   "name": "Build",
+   "src": "Fulcrum phase",
+   "goal": "Load clean data and build the most important workflows.",
+   "owners": [
+    "Launch Manager",
+    "Shop's data owner"
+   ],
+   "hands": [
+    "Validated bills of materials (BOMs), routings and inventory",
+    "Workflows built, and ones deferred"
+   ],
+   "watch": [
+    "Data prep running behind plan (public reviews mention restructuring BOMs taking time)",
+    "One person doing all the data work"
+   ],
+   "hes": "“Let's load the data as is and clean it up later.”",
+   "say": "That's your call. If the BOMs go in flat, your job costs will still be off after go-live, and that's the number you told me matters most. I'll sit with whoever knows the routings best and we'll do it together.",
+   "ask": "Which data do you trust least?"
+  },
+  {
+   "id": "validate",
+   "f": true,
+   "name": "Validate",
+   "src": "Fulcrum phase",
+   "goal": "Prove the system works on the shop's own real jobs.",
+   "owners": [
+    "Launch Manager",
+    "Shop floor leads",
+    "Engineering"
+   ],
+   "hands": [
+    "Day-in-the-life test results",
+    "Integrations confirmed",
+    "Setup issues sent to Engineering already reproduced"
+   ],
+   "watch": [
+    "Only managers testing",
+    "Open accounting integration questions"
+   ],
+   "hes": "Managers want to test it themselves and keep the floor on production.",
+   "say": "I understand protecting the floor's time. If the people running the jobs don't test it now, we'll find their problems after go-live, when they cost more to fix. Two people, one afternoon.",
+   "ask": "Which job would you be nervous to run first? Let's test that one."
+  },
+  {
+   "id": "launch",
+   "f": true,
+   "name": "Launch",
+   "src": "Fulcrum phase",
+   "goal": "Everyone trained by role, and the shop running live.",
+   "owners": [
+    "Launch Manager",
+    "Support",
+    "Account Manager"
+   ],
+   "hands": [
+    "Role-based training, including reading their own results",
+    "A launch summary for the Account Manager"
+   ],
+   "watch": [
+    "Spreadsheets running alongside",
+    "One role left behind in training"
+   ],
+   "hes": "“We'll keep the spreadsheet going, just to be safe.”",
+   "say": "Keep it for a week if it helps. After that, two systems means two answers, and nobody trusts either one. Let's pick the date the spreadsheet retires.",
+   "ask": "What's still in a spreadsheet, and why?"
+  },
+  {
+   "id": "refine",
+   "f": false,
+   "name": "Refine",
+   "src": "My addition",
+   "goal": "Fine-tune, and show first results against the baseline.",
+   "owners": [
+    "Launch Manager",
+    "Account Manager",
+    "Support"
+   ],
+   "hands": [
+    "First results against the baseline",
+    "Adoption by role"
+   ],
+   "watch": [
+    "Usage up with no measured result",
+    "Questions only going to Support"
+   ],
+   "hes": "“Everything's working. We don't need more check-ins.”",
+   "say": "Glad to hear it. Give me 20 minutes to check your first results against where you started, so you have the proof ready when someone asks whether it was worth it.",
+   "ask": "Which starting number should we check now?"
+  },
+  {
+   "id": "am",
+   "f": false,
+   "name": "To Account Management",
+   "src": "My addition",
+   "goal": "A warm handoff, so the shop never starts over.",
+   "owners": [
+    "Launch Manager",
+    "Account Manager"
+   ],
+   "hands": [
+    "Launch summary and feedback log",
+    "An introduction while Launch is still involved"
+   ],
+   "watch": [
+    "First meeting only after Launch steps away"
+   ],
+   "hes": "“We just got used to our Launch Manager.”",
+   "say": "You're not losing anyone. I'll bring your Account Manager in while we're still working together, so they already know your goals and your shop.",
+   "ask": "Who should your Account Manager meet first?"
+  }
+ ],
+ "dims": [
+  {
+   "n": "Value",
+   "def": "A measurable goal, a benchmark, and evidence the shop is reaching it. Usage alone doesn't count.",
+   "q": "What will the shop measure, against what starting number?"
+  },
+  {
+   "n": "Alignment",
+   "def": "Sales and Launch working from the same understanding of the shop's goals.",
+   "q": "Could Launch name the shop's top three goals without asking Sales?"
+  },
+  {
+   "n": "Readiness",
+   "def": "Both sides ready: setup for the shop's own use, a named owner, data and integrations on schedule.",
+   "q": "Is there a named owner, and is the data ready?"
+  },
+  {
+   "n": "Relationship",
+   "def": "How many contacts are established, at which levels: a champion with a backup, an executive sponsor.",
+   "q": "Besides our champion, who would pick up the phone?"
+  },
+  {
+   "n": "Stability",
+   "def": "Changes at the shop that could change the picture: people leaving, restructuring, budget freezes.",
+   "q": "What's changing at the shop this year?"
+  }
+ ],
+ "shops": [
+  {
+   "n": "Ridgeline Precision",
+   "i": "CNC machine shop",
+   "st": 5,
+   "due": 12,
+   "ms": "First-results review",
+   "s": [
+    [
+     4,
+     4,
+     4,
+     3,
+     4
+    ],
+    [
+     4,
+     5,
+     4,
+     4,
+     4
+    ],
+    [
+     5,
+     4,
+     5,
+     4,
+     4
+    ],
+    [
+     5,
+     4,
+     5,
+     4,
+     4
+    ],
+    [
+     5,
+     4,
+     4,
+     4,
+     4
+    ],
+    [
+     5,
+     4,
+     4,
+     4,
+     4
+    ]
+   ],
+   "goals": [
+    [
+     "On-time delivery",
+     "78%",
+     "92%",
+     "90%"
+    ],
+    [
+     "Jobs with actual cost captured",
+     "Estimates only",
+     "100%",
+     "96%"
+    ]
+   ],
+   "flags": [
+    [
+     "pos",
+     "Named project owner from the first Define call"
+    ],
+    [
+     "pos",
+     "Asked about Quality Control in Define; held for later"
+    ]
+   ],
+   "log": [
+    [
+     "Quality Control module",
+     "Held at Define"
+    ],
+    [
+     "Weekly owner report (Archie Builder idea)",
+     "Raised in training"
+    ]
+   ],
+   "next": [
+    [
+     "Launch Manager",
+     "Review on-time delivery with the owner against the 78% baseline"
+    ],
+    [
+     "Account Manager",
+     "Join the review and take over the feedback log"
+    ]
+   ],
+   "ser": {
+    "u": [
+     20,
+     45,
+     60,
+     68,
+     72,
+     75
+    ],
+    "v": [
+     10,
+     30,
+     50,
+     62,
+     70,
+     78
+    ]
+   }
+  },
+  {
+   "n": "Copperleaf Fabrication",
+   "i": "Sheet metal fabricator",
+   "st": 5,
+   "due": 30,
+   "ms": "Handoff to Account Management",
+   "s": [
+    [
+     4,
+     5,
+     4,
+     4,
+     4
+    ],
+    [
+     5,
+     5,
+     4,
+     4,
+     4
+    ],
+    [
+     5,
+     5,
+     5,
+     4,
+     4
+    ],
+    [
+     5,
+     4,
+     5,
+     5,
+     4
+    ],
+    [
+     5,
+     5,
+     5,
+     5,
+     5
+    ],
+    [
+     5,
+     5,
+     5,
+     5,
+     5
+    ]
+   ],
+   "goals": [
+    [
+     "Quote turnaround",
+     "3 days",
+     "1 day",
+     "Same day"
+    ],
+    [
+     "On-time delivery",
+     "82%",
+     "95%",
+     "96%"
+    ]
+   ],
+   "flags": [
+    [
+     "pos",
+     "Owner asked about bringing a second building onto Fulcrum"
+    ],
+    [
+     "pos",
+     "A feature the shop requested shipped and is in use"
+    ]
+   ],
+   "log": [
+    [
+     "Second building",
+     "Raised at Refine"
+    ],
+    [
+     "Grouped Work for nesting",
+     "Live since Launch"
+    ]
+   ],
+   "next": [
+    [
+     "Launch Manager",
+     "Introduce the Account Manager with the results summary"
+    ],
+    [
+     "Marketing",
+     "Ask the owner about a customer story"
+    ]
+   ],
+   "ser": {
+    "u": [
+     25,
+     50,
+     65,
+     75,
+     80,
+     85
+    ],
+    "v": [
+     15,
+     40,
+     60,
+     75,
+     85,
+     92
+    ]
+   }
+  },
+  {
+   "n": "Basin Street Machining",
+   "i": "CNC machine shop",
+   "st": 2,
+   "due": 4,
+   "ms": "Data upload deadline",
+   "s": [
+    [
+     3,
+     3,
+     2,
+     2,
+     4
+    ],
+    [
+     3,
+     3,
+     2,
+     2,
+     4
+    ],
+    [
+     3,
+     3,
+     2,
+     2,
+     4
+    ]
+   ],
+   "goals": [
+    [
+     "On-time delivery",
+     "Not measured yet",
+     "Set at Define",
+     "Baseline pending"
+    ]
+   ],
+   "flags": [
+    [
+     "warn",
+     "BOMs are flat and need restructuring before Build can finish"
+    ],
+    [
+     "warn",
+     "The owner is also the project owner and runs the floor"
+    ]
+   ],
+   "log": [
+    [
+     "Purchase Planning",
+     "Mentioned in sales"
+    ]
+   ],
+   "next": [
+    [
+     "Launch Manager",
+     "Offer a data prep working session with whoever knows the routings best"
+    ],
+    [
+     "Account Executive",
+     "Confirm the goals from sales with the owner"
+    ]
+   ],
+   "ser": {
+    "u": [
+     5,
+     12,
+     15,
+     0,
+     0,
+     0
+    ],
+    "v": [
+     0,
+     5,
+     8,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "n": "Northfork Metalworks",
+   "i": "Sheet metal fabricator",
+   "st": 3,
+   "due": 9,
+   "ms": "Day-in-the-life test",
+   "s": [
+    [
+     4,
+     4,
+     4,
+     2,
+     4
+    ],
+    [
+     4,
+     4,
+     4,
+     2,
+     4
+    ],
+    [
+     4,
+     4,
+     4,
+     2,
+     4
+    ],
+    [
+     4,
+     4,
+     4,
+     2,
+     3
+    ]
+   ],
+   "goals": [
+    [
+     "Jobs tracked live on the floor",
+     "Paper and spreadsheets",
+     "Every job",
+     "Pilot area only"
+    ]
+   ],
+   "flags": [
+    [
+     "warn",
+     "One champion and no backup contact"
+    ],
+    [
+     "warn",
+     "People on the floor haven't run a day-in-the-life test yet"
+    ]
+   ],
+   "log": [
+    [
+     "Shipping integration",
+     "Asked about in Validate"
+    ]
+   ],
+   "next": [
+    [
+     "Launch Manager",
+     "Run a day-in-the-life test with two people from the floor"
+    ],
+    [
+     "Launch Manager",
+     "Ask the champion to introduce a backup before go-live"
+    ]
+   ],
+   "ser": {
+    "u": [
+     10,
+     25,
+     40,
+     45,
+     0,
+     0
+    ],
+    "v": [
+     5,
+     15,
+     25,
+     30,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "n": "Tallgrass Aerospace Components",
+   "i": "CNC machine shop, AS9100D",
+   "st": 4,
+   "due": 6,
+   "ms": "Go-live",
+   "s": [
+    [
+     4,
+     4,
+     4,
+     4,
+     4
+    ],
+    [
+     4,
+     4,
+     5,
+     4,
+     4
+    ],
+    [
+     4,
+     4,
+     5,
+     4,
+     4
+    ],
+    [
+     4,
+     4,
+     5,
+     4,
+     4
+    ],
+    [
+     4,
+     4,
+     4,
+     3,
+     2
+    ]
+   ],
+   "goals": [
+    [
+     "Nonconformance reports closed on time",
+     "Not tracked",
+     "90%",
+     "Tracking started"
+    ]
+   ],
+   "flags": [
+    [
+     "warn",
+     "The quality manager, a key contact, left last month"
+    ],
+    [
+     "pos",
+     "Interested in nonconformance tracking in Quality Control"
+    ]
+   ],
+   "log": [
+    [
+     "Quality Control: nonconformance tracking",
+     "Raised in Launch"
+    ]
+   ],
+   "next": [
+    [
+     "Launch Manager",
+     "Train the new quality lead before go-live"
+    ],
+    [
+     "Engineering",
+     "Confirm the integration fix from Validate is released"
+    ]
+   ],
+   "ser": {
+    "u": [
+     20,
+     45,
+     60,
+     65,
+     62,
+     60
+    ],
+    "v": [
+     10,
+     35,
+     50,
+     58,
+     60,
+     61
+    ]
+   }
+  },
+  {
+   "n": "Ironwood Tool and Die",
+   "i": "Machine shop",
+   "st": 5,
+   "due": 20,
+   "ms": "First-results review",
+   "s": [
+    [
+     2,
+     3,
+     4,
+     4,
+     4
+    ],
+    [
+     2,
+     3,
+     4,
+     4,
+     4
+    ],
+    [
+     2,
+     4,
+     5,
+     4,
+     4
+    ],
+    [
+     2,
+     4,
+     5,
+     4,
+     4
+    ],
+    [
+     2,
+     4,
+     4,
+     4,
+     4
+    ],
+    [
+     2,
+     4,
+     4,
+     4,
+     4
+    ]
+   ],
+   "goals": [
+    [
+     "Job costing accuracy",
+     "No baseline set",
+     "Set at handoff",
+     "Can't be shown yet"
+    ]
+   ],
+   "flags": [
+    [
+     "warn",
+     "Usage is high, but no baseline was set, so results can't be shown"
+    ],
+    [
+     "info",
+     "The team likes the scheduling; value is still unproven to the owner"
+    ]
+   ],
+   "log": [
+    [
+     "Demand Planning",
+     "Mentioned at Refine"
+    ]
+   ],
+   "next": [
+    [
+     "Launch Manager",
+     "Rebuild a baseline from the shop's first month of job cost data"
+    ],
+    [
+     "Product",
+     "Share the reporting request raised in training"
+    ]
+   ],
+   "ser": {
+    "u": [
+     30,
+     60,
+     80,
+     88,
+     92,
+     95
+    ],
+    "v": [
+     10,
+     15,
+     20,
+     22,
+     25,
+     26
+    ]
+   }
+  },
+  {
+   "n": "Silver Creek Fab",
+   "i": "Sheet metal fabricator",
+   "st": 0,
+   "due": 5,
+   "ms": "Kickoff",
+   "s": [
+    [
+     3,
+     2,
+     3,
+     3,
+     4
+    ]
+   ],
+   "goals": [
+    [
+     "Top three goals",
+     "To confirm before kickoff",
+     "",
+     ""
+    ]
+   ],
+   "flags": [
+    [
+     "warn",
+     "Goals not written down yet at the handoff"
+    ],
+    [
+     "info",
+     "The shop mentioned ITAR work, so data access needs planning in Define"
+    ]
+   ],
+   "log": [
+    [
+     "Quoting and Sales Orders",
+     "Discussed, held for later"
+    ]
+   ],
+   "next": [
+    [
+     "Account Executive",
+     "Write down the top three goals with Launch before kickoff"
+    ],
+    [
+     "Launch Manager",
+     "Plan access controls for ITAR work in Define"
+    ]
+   ],
+   "ser": {
+    "u": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "v": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "n": "Harbor Point Precision",
+   "i": "CNC machine shop",
+   "st": 1,
+   "due": 15,
+   "ms": "Define sign-off",
+   "s": [
+    [
+     4,
+     4,
+     3,
+     3,
+     4
+    ],
+    [
+     4,
+     4,
+     3,
+     4,
+     4
+    ]
+   ],
+   "goals": [
+    [
+     "Shop-floor labor captured live",
+     "End-of-day timesheets",
+     "Every job",
+     "Not started"
+    ]
+   ],
+   "flags": [
+    [
+     "warn",
+     "Accounting integration questions came up early"
+    ],
+    [
+     "pos",
+     "Owner and shop manager both join every call"
+    ]
+   ],
+   "log": [
+    [
+     "Custom shipping report",
+     "Raised in Define"
+    ]
+   ],
+   "next": [
+    [
+     "Launch Manager",
+     "Map the accounting questions before Build starts"
+    ],
+    [
+     "Support",
+     "Share the accounting integration guide with the bookkeeper"
+    ]
+   ],
+   "ser": {
+    "u": [
+     5,
+     15,
+     0,
+     0,
+     0,
+     0
+    ],
+    "v": [
+     0,
+     5,
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  }
+ ]
 }
 </script>
 
 <script>
 const D=JSON.parse(document.getElementById("data").textContent);
-const STAGES=D.stages,DIMS=D.dims,A=D.shops,T=D.terms;
+const STAGES=D.stages,DIMS=D.dims,A=D.shops;
 const COLS=["Handoff","Define","Build","Validate","Launch","Refine"];
 const $=s=>document.querySelector(s);
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -486,28 +1278,27 @@ function strip(){
 }
 function card(s){
  const i=STAGES.indexOf(s);
- const foot=i<6?`<a class="btn solid" href="#board" data-col="${i}">See this stage on the board</a>`:"";
+ const foot=i<6?`<a class="btn" href="#board" data-col="${i}">See this stage on the board</a>`:"";
  return `<article class="card"><header><h3>${i+1}. ${esc(s.name)}</h3><span class="src">${esc(s.src)}</span></header>
- <p style="margin-bottom:14px"><b>Goal:</b> ${esc(s.goal)}</p>
- <div class="grid2">
-  <div class="talk"><div class="field"><h4>Where the owner may hesitate</h4></div><p class="hes">${esc(s.hes)}</p><div class="field"><h4>What I'd say</h4></div><blockquote>${esc(s.say)}</blockquote></div>
-  <div class="field"><h4>Owners</h4>${li(s.owners)}</div>
-  <div class="field"><h4>Hands over</h4>${li(s.hands)}</div>
-  <div class="field"><h4>Watch for</h4>${li(s.watch)}</div>
-  <div class="field"><h4>One question I'd ask</h4><p>${esc(s.ask)}</p></div>
+ <p class="goal1"><b>Goal:</b> ${esc(s.goal)}</p>
+ <div class="talk"><p class="hes"><span class="lbl">Where the owner might push back</span>${esc(s.hes)}</p><blockquote><span class="lbl">What I'd say</span>${esc(s.say)}</blockquote></div>
+ <div class="grid3">
+  <div class="field"><h4>Who's involved</h4>${li(s.owners)}</div>
+  <div class="field"><h4>What gets handed over</h4>${li(s.hands)}</div>
+  <div class="field"><h4>Early warning signs</h4>${li(s.watch)}</div>
  </div>
+ <p class="ask1"><b>A question I'd ask the owner:</b> ${esc(s.ask)}</p>
  <div class="cardfoot">${foot}</div></article>`;
 }
 function wire(root){root.querySelectorAll("[data-col]").forEach(a=>a.onclick=()=>{hl=+a.dataset.col;renderDetail()})}
 function showCard(){$("#stageCard").innerHTML=card(STAGES.find(s=>s.id===cur));wire($("#stageCard"))}
-$("#showAll").onclick=()=>{const el=$("#allCards");el.hidden=!el.hidden;$("#showAll").textContent=el.hidden?"Show every stage":"Hide the full list";if(!el.hidden){el.innerHTML=STAGES.map(card).join("");wire(el)}};
 
 /* board */
 let W=[3,3,3,3,3],sel=0;
 function scoreOf(a){const l=a.s[a.s.length-1];const t=W.reduce((x,y)=>x+y,0)||1;return l.reduce((x,v,i)=>x+v*W[i],0)/t}
 function status(v){return v>=4?["good","Strong"]:v>=3?["warn","Steady"]:["bad","Needs attention"]}
 function priority(a){const v=scoreOf(a);const warns=a.flags.filter(f=>f[0]==="warn").length;return (5-v)*2+(a.due<=7?3:a.due<=14?1:0)+warns}
-function why(a){const r=[];if(a.due<=7)r.push(`${esc(a.ms)} in ${a.due} days`);else r.push(`${esc(a.ms)} in ${a.due} days`);const w=a.flags.find(f=>f[0]==="warn");if(w)r.push(esc(w[1]).toLowerCase());if(scoreOf(a)<3)r.push("score below 3");return r.join(" · ")}
+function why(a){return `${esc(a.ms)} in ${a.due} days`}
 function weights(){
  $("#weights").innerHTML=DIMS.map((d,i)=>`<div class="wrow"><label for="w${i}">${d.n}</label><input id="w${i}" type="range" min="0" max="5" value="${W[i]}"><output id="o${i}">${W[i]}</output><div class="q">${esc(d.q)}</div></div>`).join("");
  DIMS.forEach((d,i)=>$("#w"+i).oninput=e=>{W[i]=+e.target.value;$("#o"+i).textContent=W[i];refresh()});
@@ -520,8 +1311,8 @@ function triage(){
 function port(){
  const order=A.map((a,i)=>i);const m=$("#sort").value;
  order.sort((x,y)=>m==="att"?scoreOf(A[x])-scoreOf(A[y]):m==="due"?A[x].due-A[y].due:A[x].st-A[y].st);
- const att=A.filter(a=>scoreOf(a)<3.5).length;
- $("#portCount").textContent=`8 shops · ${att} needing attention`;
+ const c={good:0,warn:0,bad:0};A.forEach(a=>c[status(scoreOf(a))[0]]++);
+ $("#portCount").textContent=`8 shops: ${c.good} strong, ${c.warn} steady, ${c.bad} need${c.bad===1?"s":""} attention`;
  $("#port").innerHTML=order.map(i=>{const a=A[i],v=scoreOf(a),[c,l]=status(v);
   return `<button class="acct" type="button" data-i="${i}" aria-pressed="${i===sel}"><span class="nm">${esc(a.n)}</span><span class="meta">${esc(a.i)} · ${COLS[a.st]} · ${esc(a.ms)} in ${a.due} days</span><span class="sc"><b>${v.toFixed(1)}</b><span class="pill ${c}">${l}</span></span><span class="stagebar">${COLS.map((x,k)=>`<i class="${k<=a.st?"on":""}"></i>`).join("")}</span></button>`}).join("");
  $("#port").querySelectorAll(".acct").forEach(b=>b.onclick=()=>{sel=+b.dataset.i;port();renderDetail()});
@@ -548,28 +1339,7 @@ function renderDetail(){
 }
 function refresh(){triage();port();renderDetail()}
 
-/* glossary */
-const knownSet=new Set();
-try{JSON.parse(localStorage.getItem("ftk")||"[]").forEach(x=>knownSet.add(x))}catch(e){}
-function saveKnown(){try{localStorage.setItem("ftk",JSON.stringify([...knownSet]))}catch(e){}}
-function knownCount(){$("#known").textContent=`${knownSet.size} of ${T.length} reviewed`}
-function front(t){return `<span class="t">${esc(t[0])}</span><span class="hint">Tap to see the definition</span>`}
-function cards(){
- $("#cards").innerHTML=T.map((t,i)=>`<button class="fc" type="button" data-i="${i}">${front(t)}</button>`).join("");
- $("#cards").querySelectorAll(".fc").forEach(b=>b.onclick=e=>{if(e.target.tagName==="A")return;const i=+b.dataset.i,t=T[i];
-  if(b.classList.toggle("flipped")){knownSet.add(i);saveKnown();b.innerHTML=`<span class="t">${esc(t[0])}</span><span class="d">${esc(t[1])}</span><a class="hint" href="${t[2]}" target="_blank" rel="noopener">Where I learned it</a>`}else b.innerHTML=front(t);knownCount()});
- knownCount();
-}
-let qs={n:0,right:0};
-function quiz(){
- const i=Math.floor(Math.random()*T.length),opts=[i];while(opts.length<4){const r=Math.floor(Math.random()*T.length);if(!opts.includes(r))opts.push(r)}opts.sort(()=>Math.random()-.5);
- $("#quiz").innerHTML=`<div class="muted" style="font-size:.85rem">Question ${qs.n+1} · ${qs.right} right so far</div><p style="margin-top:6px;font-size:1.05rem"><b>Which term matches?</b> ${esc(T[i][1])}</p><div class="opts">${opts.map(o=>`<button type="button" data-o="${o}">${esc(T[o][0])}</button>`).join("")}</div><div id="qafter" style="margin-top:12px" hidden><button class="btn solid" type="button" id="qnext">Next question</button></div>`;
- $("#quiz").querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{if(!$("#qafter").hidden)return;const ok=+b.dataset.o===i;b.classList.add(ok?"right":"wrong");if(!ok)$(`#quiz [data-o="${i}"]`).classList.add("right");qs.n++;if(ok)qs.right++;$("#qafter").hidden=false;$("#qnext").onclick=quiz});
-}
-$("#modeCards").onclick=()=>{$("#modeCards").setAttribute("aria-pressed","true");$("#modeQuiz").setAttribute("aria-pressed","false");$("#cards").hidden=false;$("#quiz").hidden=true};
-$("#modeQuiz").onclick=()=>{$("#modeQuiz").setAttribute("aria-pressed","true");$("#modeCards").setAttribute("aria-pressed","false");$("#cards").hidden=true;$("#quiz").hidden=false;quiz()};
-
-strip();showCard();weights();refresh();cards();
+strip();showCard();weights();refresh();
 </script>
 
 <script>

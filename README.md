@@ -6,7 +6,7 @@ An interactive page showing how I run software implementations ("launches") for 
 
 ## What's inside
 
-- **Four short stories** about how I work: two hands-on builds, one about helping a hesitant client switch platforms, and one about teaching a client.
+- **Four short stories:** two hands-on builds, a hesitant client who switched platforms, and teaching a client.
 - **A six-stage launch journey**, with the moment each stage's owner is likely to hesitate and what I'd say.
 - **How I'd run a full launch load:** a weekly rhythm, one home per customer, and what I'd automate first with Claude.
 - **A Launch board** with adjustable score weights and a "This week, first" triage list.
