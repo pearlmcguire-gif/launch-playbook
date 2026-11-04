@@ -128,11 +128,15 @@ nav.top a{text-decoration:none;font-size:.9rem;font-weight:500}
 .dashhead select{font:inherit;padding:5px 8px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--fg)}
 .port{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 @media (max-width:640px){.port{grid-template-columns:minmax(0,1fr)}}
-.acct{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg);color:var(--fg);text-align:left;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;min-width:0}
+.acct{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--bg);color:var(--fg);text-align:left;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;min-width:0}
 .acct[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
 .acct .nm{font-weight:700}
 .acct .meta{font-size:.82rem;color:var(--muted)}
-.acct .sc{grid-row:1/3;grid-column:2;text-align:right}
+.acct .stg{justify-self:start;font-size:.75rem;font-weight:700;background:var(--soft);color:var(--fg);border-radius:999px;padding:2px 10px;margin:4px 0}
+.acct .money{font-size:.85rem;font-variant-numeric:tabular-nums}
+.acct .nm,.acct .stg{grid-column:1}
+.acct .meta,.acct .money{grid-column:1/-1}
+.acct .sc{grid-row:1/4;grid-column:2;text-align:right;align-self:start}
 .acct .sc b{font-size:1.4rem;font-variant-numeric:tabular-nums;display:block;line-height:1}
 .pill{display:inline-block;font-size:.72rem;font-weight:700;border-radius:999px;padding:2px 8px;margin-top:4px}
 .pill.good{background:var(--good-bg);color:var(--good)}.pill.warn{background:var(--warn-bg);color:var(--warn)}.pill.bad{background:var(--bad-bg);color:var(--bad)}
@@ -304,8 +308,8 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:.82rem
     <div class="panel tri"><h3>This week, first</h3><p class="muted small" style="margin-bottom:8px">Ranked by low scores, warning flags and the nearest deadline.</p><ol id="triage"></ol></div>
   </div>
   <div class="dashhead"><b id="portCount">Shops</b>
-    <label>Sort <select id="sort"><option value="att">Lowest score first</option><option value="due">Next deadline first</option><option value="stg">Launch stage</option></select></label></div>
-  <p class="muted small" style="margin-bottom:10px">A shop's score is the weighted average of its five scores at its latest stage. Strong: 4 or higher. Steady: 3 to 3.9. Needs attention: below 3.</p>
+    <label>Sort <select id="sort"><option value="att">Lowest score first</option><option value="due">Next deadline first</option><option value="stg">Launch stage</option><option value="val">Highest contract first</option></select></label></div>
+  <p class="muted small" style="margin-bottom:10px">A shop's score is the weighted average of its five scores at its latest stage. Strong: 4 or higher. Steady: 3 to 3.9. Needs attention: below 3. Implementation and contract amounts are sample ranges. Contract value isn't part of the score yet; a later version could weight it, so higher-value shops rank higher.</p>
   <div class="port" id="port"></div>
   <div id="detail"></div>
 </section>
@@ -630,7 +634,10 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:.82rem
      70,
      78
     ]
-   }
+   },
+   "impl": "$10K-$20K",
+   "contract": "$40K-$60K",
+   "clo": 40
   },
   {
    "n": "Copperleaf Fabrication",
@@ -743,7 +750,10 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:.82rem
      85,
      92
     ]
-   }
+   },
+   "impl": "$20K-$35K",
+   "contract": "$80K-$120K",
+   "clo": 80
   },
   {
    "n": "Basin Street Machining",
@@ -825,7 +835,10 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:.82rem
      0,
      0
     ]
-   }
+   },
+   "impl": "$5K-$10K",
+   "contract": "$20K-$40K",
+   "clo": 20
   },
   {
    "n": "Northfork Metalworks",
@@ -914,7 +927,10 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:.82rem
      0,
      0
     ]
-   }
+   },
+   "impl": "$10K-$20K",
+   "contract": "$40K-$60K",
+   "clo": 40
   },
   {
    "n": "Tallgrass Aerospace Components",
@@ -1010,7 +1026,10 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:.82rem
      60,
      61
     ]
-   }
+   },
+   "impl": "$20K-$35K",
+   "contract": "$60K-$80K",
+   "clo": 60
   },
   {
    "n": "Ironwood Tool and Die",
@@ -1113,7 +1132,10 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:.82rem
      25,
      26
     ]
-   }
+   },
+   "impl": "$10K-$20K",
+   "contract": "$40K-$60K",
+   "clo": 40
   },
   {
    "n": "Silver Creek Fab",
@@ -1181,7 +1203,10 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:.82rem
      0,
      0
     ]
-   }
+   },
+   "impl": "$10K-$20K",
+   "contract": "$60K-$80K",
+   "clo": 60
   },
   {
    "n": "Harbor Point Precision",
@@ -1256,7 +1281,10 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:.82rem
      0,
      0
     ]
-   }
+   },
+   "impl": "$5K-$10K",
+   "contract": "$20K-$40K",
+   "clo": 20
   }
  ]
 }
@@ -1310,11 +1338,11 @@ function triage(){
 }
 function port(){
  const order=A.map((a,i)=>i);const m=$("#sort").value;
- order.sort((x,y)=>m==="att"?scoreOf(A[x])-scoreOf(A[y]):m==="due"?A[x].due-A[y].due:A[x].st-A[y].st);
+ order.sort((x,y)=>m==="att"?scoreOf(A[x])-scoreOf(A[y]):m==="due"?A[x].due-A[y].due:m==="val"?A[y].clo-A[x].clo:A[x].st-A[y].st);
  const c={good:0,warn:0,bad:0};A.forEach(a=>c[status(scoreOf(a))[0]]++);
  $("#portCount").textContent=`8 shops: ${c.good} strong, ${c.warn} steady, ${c.bad} need${c.bad===1?"s":""} attention`;
  $("#port").innerHTML=order.map(i=>{const a=A[i],v=scoreOf(a),[c,l]=status(v);
-  return `<button class="acct" type="button" data-i="${i}" aria-pressed="${i===sel}"><span class="nm">${esc(a.n)}</span><span class="meta">${esc(a.i)} · ${COLS[a.st]} · ${esc(a.ms)} in ${a.due} days</span><span class="sc"><b>${v.toFixed(1)}</b><span class="pill ${c}">${l}</span></span><span class="stagebar">${COLS.map((x,k)=>`<i class="${k<=a.st?"on":""}"></i>`).join("")}</span></button>`}).join("");
+  return `<button class="acct" type="button" data-i="${i}" aria-pressed="${i===sel}"><span class="nm">${esc(a.n)}</span><span class="meta">${esc(a.i)}</span><span class="stg">Stage ${a.st+1} of 6: ${COLS[a.st]}</span><span class="money">Implementation: ${a.impl}</span><span class="money">Total contract: ${a.contract}</span><span class="meta">Next: ${esc(a.ms)} in ${a.due} days</span><span class="sc"><b>${v.toFixed(1)}</b><span class="pill ${c}">${l}</span></span><span class="stagebar">${COLS.map((x,k)=>`<i class="${k<=a.st?"on":""}"></i>`).join("")}</span></button>`}).join("");
  $("#port").querySelectorAll(".acct").forEach(b=>b.onclick=()=>{sel=+b.dataset.i;port();renderDetail()});
 }
 $("#sort").onchange=port;
@@ -1329,7 +1357,7 @@ function renderDetail(){
  const head=COLS.map((x,k)=>`<th class="${k===hl?"hl":""}">${x}</th>`).join("");
  const rows=DIMS.map((d,i)=>`<tr><td title="${esc(d.def)}">${d.n}</td>`+COLS.map((x,k)=>{const sc=a.s[k],h=k===hl?"hl":"";return sc?`<td class="c s${sc[i]} ${h}">${sc[i]}</td>`:`<td class="na ${h}">·</td>`}).join("")+"</tr>").join("");
  const goals=a.goals.map(g=>g[2]?`<div class="goal"><b>${esc(g[0])}</b><br><span>Start ${esc(g[1])} · Target ${esc(g[2])} · Now ${esc(g[3])}</span></div>`:`<div class="goal"><b>${esc(g[0])}</b><br><span>${esc(g[1])}</span></div>`).join("");
- $("#detail").innerHTML=`<article class="detail"><div class="top"><div><h3>${esc(a.n)}</h3><span class="muted">${esc(a.i)} · next: ${esc(a.ms)} in ${a.due} days</span></div><div><b style="font-size:1.5rem">${v.toFixed(1)}</b> <span class="pill ${c}">${l}</span></div></div>
+ $("#detail").innerHTML=`<article class="detail"><div class="top"><div><h3>${esc(a.n)}</h3><span class="muted">${esc(a.i)} · Stage ${a.st+1} of 6: ${COLS[a.st]} · Implementation: ${a.impl} · Total contract: ${a.contract} · Next: ${esc(a.ms)} in ${a.due} days</span></div><div><b style="font-size:1.5rem">${v.toFixed(1)}</b> <span class="pill ${c}">${l}</span></div></div>
  <div class="detgrid"><div class="mini"><h4>Score at every stage</h4><div class="tbl"><table><thead><tr><th>Score</th>${head}</tr></thead><tbody>${rows}</tbody></table></div>
  ${hl>=0?`<p class="muted" style="font-size:.8rem;margin-top:6px">Outlined: the ${COLS[hl]} stage you came from.</p>`:""}
  <h4>Usage compared with value</h4>${spark(a.ser)}</div>
