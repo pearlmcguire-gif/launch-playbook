@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Launch Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:wght@600;700&display=swap">
+<style>
+/* Layout: one reading column; stories first, then the Launch journey, the Launch board, and the back page */
+:root{
+  --ink:#2b183f; --paper:#fbfaf6; --lav:#9b83b6;
+  --bg:var(--paper); --fg:var(--ink); --soft:#f1edf5; --line:#ddd5e6; --accent:#007b9c; --accent-fg:#ffffff; --muted:#6f6777;
+  --good:#2f7d4f; --good-bg:#e3f1e8; --warn:#9a6200; --warn-bg:#fbefd9; --bad:#a3364a; --bad-bg:#f7e1e5;
+  --h1:clamp(2rem,5vw,3rem); --h2:1.6rem; --h3:1.15rem;
+  --display:"Playfair Display",Georgia,"Times New Roman",serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1d102c; --fg:#fbfaf6; --soft:#2b183f; --line:#45305e; --accent:#05a8d1; --accent-fg:#1d102c; --muted:#b5abc0;
+  --good:#7fd3a0; --good-bg:#1f3a2c; --warn:#f2c46b; --warn-bg:#3d2f14; --bad:#f19aac; --bad-bg:#43202b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1d102c; --fg:#fbfaf6; --soft:#2b183f; --line:#45305e; --accent:#05a8d1; --accent-fg:#1d102c; --muted:#b5abc0;
+  --good:#7fd3a0; --good-bg:#1f3a2c; --warn:#f2c46b; --warn-bg:#3d2f14; --bad:#f19aac; --bad-bg:#43202b; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:var(--h1)} h2{font-size:var(--h2)} h3{font-size:var(--h3)}
+p{margin:0;max-width:68ch}
+a{color:var(--accent)}
+.eyebrow{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.muted{color:var(--muted)}
+section{padding-block:48px;border-top:1px solid var(--line)}
+section.hero{border-top:0;padding-block:40px 36px}
+.stack{display:flex;flex-direction:column;gap:14px}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;gap:18px;align-items:center;padding-block:10px;flex-wrap:wrap}
+nav.top b{font-family:var(--display);margin-right:auto}
+nav.top a{text-decoration:none;font-size:.9rem;font-weight:500}
+
+/* hero teasers */
+.hero h1{margin-block:10px 14px}
+.hero .lede{font-size:1.15rem}
+.teasers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
+@media (max-width:760px){.teasers{grid-template-columns:minmax(0,1fr)}}
+.teaser{display:flex;flex-direction:column;gap:6px;border:1px solid var(--line);border-radius:12px;padding:16px;text-decoration:none;color:var(--fg);background:var(--bg)}
+.teaser .kind{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.teaser b{font-family:var(--display);font-size:1.15rem}
+.teaser span{font-size:.92rem}
+.teaser em{font-style:normal;font-size:.85rem;color:var(--accent);margin-top:auto}
+.layers{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-size:.9rem}
+
+/* stories */
+.stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:20px}
+@media (max-width:760px){.stories{grid-template-columns:minmax(0,1fr)}}
+.story{border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.story .kind{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.story .co{font-size:.85rem;color:var(--muted)}
+.story dl{margin:0;display:grid;gap:8px}
+.story dt{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.story dd{margin:0}
+.story .result{background:var(--soft);border-radius:8px;padding:10px 12px}
+.also{border-left:3px solid var(--lav);padding-left:14px;margin-top:20px}
+
+/* journey */
+.strip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:20px}
+@media (max-width:760px){.strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.step{border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:8px;padding:10px 8px;text-align:left;min-width:0}
+.step.f{background:var(--soft)}
+.step small{display:block;font-size:.72rem;color:var(--muted)}
+.step strong{display:block;font-size:.92rem}
+.step[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.step[aria-pressed="true"] small{color:var(--bg)}
+.legend{font-size:.8rem;color:var(--muted);margin-top:8px}
+.card{border:1px solid var(--line);border-radius:12px;padding:20px;margin-top:16px;background:var(--bg)}
+.card header{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;margin-bottom:12px}
+.card header .src{font-size:.8rem;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px}
+@media (max-width:640px){.grid2{grid-template-columns:minmax(0,1fr)}}
+.grid2>*{min-width:0}
+.field h4{margin:0 0 4px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.field ul{margin:0;padding-left:18px}
+.field li{margin-bottom:3px}
+.talk{grid-column:1/-1;border:1px solid var(--lav);border-radius:10px;padding:14px 16px}
+.talk .hes{font-size:.92rem;margin-bottom:6px}
+.talk blockquote{margin:0;font-size:1.02rem;font-style:italic}
+.ask{grid-column:1/-1;font-size:.95rem}
+.cardfoot{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin-top:14px;font-size:.9rem}
+.btn{border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:999px;padding:6px 14px;font-size:.9rem;text-decoration:none;display:inline-block}
+.btn.solid{background:var(--accent);color:var(--accent-fg)}
+.threads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:36px}
+@media (max-width:760px){.threads{grid-template-columns:minmax(0,1fr)}}
+.thread{border-top:3px solid var(--lav);padding-top:12px;min-width:0}
+.thread h3{margin-bottom:6px}
+.thread p{font-size:.95rem}
+
+/* board */
+.controls{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:16px;margin-top:18px}
+@media (max-width:760px){.controls{grid-template-columns:minmax(0,1fr)}}
+.controls>*{min-width:0}
+.panel{border:1px solid var(--line);border-radius:12px;padding:16px}
+.panel h3{font-family:var(--body);font-size:.95rem;margin-bottom:10px}
+.wrow{display:grid;grid-template-columns:100px minmax(0,1fr) 22px;gap:10px;align-items:center;margin-bottom:8px;font-size:.9rem}
+.wrow input{width:100%;accent-color:var(--accent)}
+.wrow output{font-variant-numeric:tabular-nums;text-align:right}
+.q{font-size:.8rem;color:var(--muted);grid-column:1/-1;margin:-4px 0 6px}
+.tri ol{margin:0;padding-left:20px}
+.tri li{margin-bottom:10px;font-size:.92rem}
+.tri li b{display:block}
+.tri .why{color:var(--muted);font-size:.85rem}
+.dashhead{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin:22px 0 8px}
+.dashhead select{font:inherit;padding:5px 8px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--fg)}
+.port{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:640px){.port{grid-template-columns:minmax(0,1fr)}}
+.acct{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--bg);color:var(--fg);text-align:left;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;min-width:0}
+.acct[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.acct .nm{font-weight:700}
+.acct .meta{font-size:.82rem;color:var(--muted)}
+.acct .sc{grid-row:1/3;grid-column:2;text-align:right}
+.acct .sc b{font-size:1.4rem;font-variant-numeric:tabular-nums;display:block;line-height:1}
+.pill{display:inline-block;font-size:.72rem;font-weight:700;border-radius:999px;padding:2px 8px;margin-top:4px}
+.pill.good{background:var(--good-bg);color:var(--good)}.pill.warn{background:var(--warn-bg);color:var(--warn)}.pill.bad{background:var(--bad-bg);color:var(--bad)}
+.stagebar{grid-column:1/-1;display:grid;grid-template-columns:repeat(6,1fr);gap:3px;margin-top:8px}
+.stagebar i{height:5px;border-radius:3px;background:var(--line)}
+.stagebar i.on{background:var(--lav)}
+.detail{border:1px solid var(--line);border-radius:12px;padding:18px;margin-top:14px}
+.detail .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:baseline}
+.detail h3{font-size:1.35rem}
+.detgrid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:18px;margin-top:14px}
+@media (max-width:760px){.detgrid{grid-template-columns:minmax(0,1fr)}}
+.detgrid>*{min-width:0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.85rem;font-variant-numeric:tabular-nums}
+th,td{padding:6px 5px;text-align:center;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+th{font-weight:500;color:var(--muted);font-size:.76rem}
+th.hl,td.hl{outline:2px solid var(--accent);outline-offset:-2px}
+td.c{font-weight:700}
+td.s5,td.s4{background:var(--good-bg);color:var(--good)}td.s3{background:var(--warn-bg);color:var(--warn)}td.s2,td.s1{background:var(--bad-bg);color:var(--bad)}
+td.na{color:var(--muted)}
+.mini h4{margin:12px 0 6px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mini ul{margin:0;padding-left:18px;font-size:.9rem}
+.flag{display:flex;gap:8px;align-items:flex-start;font-size:.9rem;margin-bottom:4px}
+.flag i{flex:none;width:8px;height:8px;border-radius:50%;margin-top:7px}
+.flag.pos i{background:var(--good)}.flag.warn i{background:var(--warn)}.flag.info i{background:var(--lav)}
+.goal{font-size:.88rem;margin-bottom:6px}
+.goal span{color:var(--muted)}
+.team{display:grid;grid-template-columns:120px minmax(0,1fr);gap:8px;font-size:.9rem;margin-bottom:4px}
+svg.spark{width:100%;height:70px;display:block}
+.key{font-size:.78rem;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap}
+.key i{display:inline-block;width:14px;height:3px;vertical-align:middle;margin-right:4px}
+
+/* glossary */
+.gtools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
+.gtools [aria-pressed="true"]{background:var(--accent);color:var(--accent-fg)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+@media (max-width:760px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:440px){.cards{grid-template-columns:minmax(0,1fr)}}
+.fc{border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--bg);color:var(--fg);text-align:left;min-height:120px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.fc .t{font-family:var(--display);font-size:1.1rem;font-weight:700}
+.fc .d{font-size:.9rem}
+.fc .hint{font-size:.75rem;color:var(--muted);margin-top:auto}
+.fc.flipped{background:var(--soft)}
+.quiz{border:1px solid var(--line);border-radius:12px;padding:18px;margin-top:14px}
+.quiz .opts{display:grid;gap:8px;margin-top:12px}
+.quiz .opts button{border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:8px;padding:10px 12px;text-align:left}
+.quiz .opts button.right{border-color:var(--good);background:var(--good-bg);color:var(--good)}
+.quiz .opts button.wrong{border-color:var(--bad);background:var(--bad-bg);color:var(--bad)}
+ol.learn{margin:12px 0 0;padding-left:20px}
+ol.learn li{margin-bottom:6px}
+.load{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:20px}
+@media (max-width:860px){.load{grid-template-columns:minmax(0,1fr)}}
+.load .col{border-top:3px solid var(--accent);padding-top:12px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.rhythm{margin:0;display:grid;gap:10px}
+.rhythm dt{font-weight:700;font-size:.85rem;color:var(--accent)}
+.rhythm dd{margin:0;font-size:.93rem}
+.load ul{margin:0;padding-left:18px;font-size:.93rem}
+.load li{margin-bottom:4px}
+.small{font-size:.85rem}
+.built{margin-top:36px}
+.bgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+@media (max-width:760px){.bgrid{grid-template-columns:minmax(0,1fr)}}
+.bgrid>*{border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:4px;color:var(--fg);text-decoration:none;min-width:0}
+.bgrid span{font-size:.88rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:.82rem;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.card,.detail{animation:in .25s ease-out}@keyframes in{from{transform:translateY(4px)}to{transform:none}}}
+</style>
+</head>
+<body>
+
+
+<nav class="top"><div class="wrap">
+  <b>Prepared for Fulcrum</b>
+  <a href="#stories">Stories</a><a href="#journey">Launch</a><a href="#workload">Workload</a><a href="#board">Board</a><a href="#terms">Terms</a>
+</div></nav>
+
+<main class="wrap">
+<section class="hero">
+  <div class="eyebrow">Prepared for Fulcrum's Launch team</div>
+  <h1>From handoff to first results</h1>
+  <p class="lede">Three stories about how I work, then how I'd run a Fulcrum launch: the stages, where shop owners are likely to hesitate, and what I'd say when they do.</p>
+  <p class="muted" style="margin-top:10px">Pearl McGuire · Customer Success and implementation · <a href="https://www.linkedin.com/in/pearlmcguire" target="_blank" rel="noopener">LinkedIn</a></p>
+  <div class="teasers">
+    <a class="teaser" href="#s-malls"><span class="kind">Rolled up my sleeves</span><b>Seven malls, one date that couldn't move</b><span>Prioritized the urgent malls and got the flagship live on time.</span><em>Read the story</em></a>
+    <a class="teaser" href="#s-bot"><span class="kind">Rolled up my sleeves</span><b>Answers around the clock</b><span>Built an AI Help Center bot: 40% of inquiries resolved, 60% fewer second-tier escalations.</span><em>Read the story</em></a>
+    <a class="teaser" href="#s-change"><span class="kind">When a client didn't want to change</span><b>Moving a happy client to something new</b><span>Took the work off their plate, and they chose the new platform.</span><em>Read the story</em></a>
+  </div>
+  <div class="layers muted"><span>Also on this page:</span><a href="#journey">The Launch journey, 2-5 min</a><a href="#workload">How I'd run a full launch load</a><a href="#board">A Launch board to try</a><a href="#terms">Terms I'm learning</a></div>
+</section>
+
+<section id="stories">
+  <div class="eyebrow">How I work</div>
+  <h2>Four stories</h2>
+  <div class="stories">
+    <article class="story" id="s-malls">
+      <span class="kind">Rolled up my sleeves</span>
+      <h3>Seven malls, one date that couldn't move</h3>
+      <span class="co">MappedIn, an indoor mapping platform · implementation owner (contractor)</span>
+      <dl>
+        <div><dt>The situation</dt><dd>A major mall operator in Thailand was rolling out MappedIn across seven malls, timed to a big celebration at its largest mall. There was no room for extensions.</dd></div>
+        <div><dt>What made it hard</dt><dd>The client had very specific needs, many beyond what the product did at the time: a long list of feature requests, and late-night and early-morning calls.</dd></div>
+        <div><dt>What I did</dt><dd>I prioritized the two to three most urgent malls to go live first. I ran the project with the client's project manager and their 5-7 person team, while coordinating our Solutions, Data and Development teams. When Development needed details on the data-imports API that I couldn't give them, I brought the Data team into those calls directly.</dd></div>
+      </dl>
+      <p class="result"><b>How it worked:</b> the flagship mall went live on time, and a mock preview reached the client company's President early.</p>
+    </article>
+    <article class="story" id="s-bot">
+      <span class="kind">Rolled up my sleeves</span>
+      <h3>Answers around the clock</h3>
+      <span class="co">Eptura (formerly Proxyclick), a visitor management platform · Customer Success</span>
+      <dl>
+        <div><dt>The situation</dt><dd>Our support team covered Europe, Middle East and Africa (EMEA) and US hours. Clients in Asia-Pacific were mostly on their own during their workday.</dd></div>
+        <div><dt>What I did</dt><dd>I built Proxyclick's AI Help Center bot in Intercom from zero. I researched the questions clients asked most, then wrote the bot's content and macro templates that suggested articles automatically. It walked clients through step-by-step fixes, helped them troubleshoot, and sent them to the right article or video. As part of the same project I built a macro and prompt library for the support team.</dd></div>
+      </dl>
+      <p class="result"><b>How it worked:</b> 40% of inquiries were resolved through AI chat and self-service, and the library cut second-tier escalations by 60%. Asia-Pacific clients had answers across almost all of the hours our team didn't cover. The project led to me owning all Help Center and academy content.</p>
+    </article>
+    <article class="story" id="s-change">
+      <span class="kind">When a client didn't want to change</span>
+      <h3>Moving a happy client to something new</h3>
+      <span class="co">MappedIn · self-serve platform launch (contractor)</span>
+      <dl>
+        <div><dt>The situation</dt><dd>MappedIn was launching a new self-serve platform, and our VP asked me to step in on the project. One client on my list ran a single-level outdoor outlet mall on our older Enterprise system. Not the ideal customer profile, but they liked the product.</dd></div>
+        <div><dt>Why they hesitated</dt><dd>Getting them on a call took a while. Once they joined, there were two reasons: they didn't want to take on the work of switching, and they were reviewing budgets, so any change in fees made them nervous.</dd></div>
+        <div><dt>What I did</dt><dd>I took the work off their plate. I had already built their map on the new platform, I set up their location myself, and since their contract was current, I gave them access so they could jump in and try it. I built a demo they could take back to their marketing and leadership teams. On budget, we were clear: they could keep their current setup, but they'd pay roughly two to three times more than on self-serve, and that cost would only keep growing and cause problems with their finance team. Self-serve would be much easier on their budget and on their teams. When they found missing features, I took the requests to Product.</dd></div>
+      </dl>
+      <p class="result"><b>How it worked:</b> they chose the new self-serve map, even without the exact same feature set, because it covered what they needed. It also let them map beyond their property line, so they could add parking, driveways and directions from the highway as construction at the far end of their lot went up.</p>
+    </article>
+    <article class="story" id="s-train">
+      <span class="kind">Teaching a client</span>
+      <h3>The training gap behind a complaint</h3>
+      <span class="co">Pathmonk, a website lead-conversion platform · sole Customer Success hire (contractor)</span>
+      <dl>
+        <div><dt>The situation</dt><dd>A client mentioned in an unrelated email, about updating their content, that their lead results were dropping.</dd></div>
+        <div><dt>What I found</dt><dd>Discovery showed nobody had taught them how to read their dashboard or calculate their return on investment. It was a training gap, not a results problem.</dd></div>
+        <div><dt>What I did</dt><dd>Their content was in the middle of an update, so instead of anchoring to an outdated baseline, we set new benchmarks together. Then I followed up on a set schedule over the next two to three months.</dd></div>
+      </dl>
+      <p class="result"><b>How it worked:</b> by the end, they could read and interpret the dashboard themselves.</p>
+    </article>
+  </div>
+  <div class="also">
+    <h3>And one I didn't let go of</h3>
+    <p style="margin-top:6px">At MappedIn I picked up an account flagged as challenging because its contacts weren't engaging. I dug into its history, found the real decision-maker, and within the first quarter had every thread going to the right people, contacts at more properties, account health up and two expansion conversations open.</p>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="eyebrow">How I'd run a Fulcrum launch</div>
+  <h2>Six stages, and where owners hesitate</h2>
+  <p style="margin-top:8px">The middle four are Fulcrum's published Launch phases. Handoff, Refine and the handoff to Account Management are my proposal. Each card includes the moment I'd expect a shop owner to push back, and what I'd say. These are hypotheses from fulcrumpro.com and public reviews, and the first thing I'd check with your team.</p>
+  <div class="strip" id="strip"></div>
+  <p class="legend">Shaded: Fulcrum's Launch phases. Unshaded: my proposed stages.</p>
+  <div id="stageCard"></div>
+  <div class="cardfoot" style="justify-content:flex-start"><button class="btn" id="showAll" type="button">Show every stage</button></div>
+  <div id="allCards" hidden></div>
+  <div class="threads">
+    <div class="thread"><h3>A feedback and expansion log, from day one</h3><p>Feature requests, custom tool ideas, modules held for later and anything Marketing should hear go into one log that travels with the shop. Product requests carry a status the shop can see. Not every request needs to land in the next sprint, but every request deserves a customer who knows where it stands.</p></div>
+    <div class="thread"><h3>A "what's new since kickoff" note at every stage</h3><p>Fulcrum ships often, so the product at go-live can be ahead of the one the shop saw in the demo. A short note at each stage keeps the owner looking forward, and turns new releases into reasons to try something instead of surprises.</p></div>
+  </div>
+</section>
+
+<section id="workload">
+  <div class="eyebrow">How I'd stay on top of it</div>
+  <h2>Running a full launch load</h2>
+  <p style="margin-top:8px">With shops at every stage at once, the job is making sure none of them slips. Here's how I'd run my week. It's my plan, not a description of Fulcrum's process, and I'd shape it around how your team already works.</p>
+  <div class="load">
+    <div class="col"><h3>A weekly rhythm</h3>
+      <dl class="rhythm">
+        <div><dt>Monday</dt><dd>Rank every shop on the board, block time for the top three, and confirm this week's deadlines with each shop.</dd></div>
+        <div><dt>Every day</dt><dd>Prep before each call. Log follow-ups and requests the same day. Reproduce setup issues before they go to Engineering.</dd></div>
+        <div><dt>Every week</dt><dd>A health check on every shop, with more check-ins during early rollout, when problems are most likely to show up.</dd></div>
+        <div><dt>Thursday</dt><dd>Update every launch summary and the feedback log, send Product the week's requests, and flag anything still open, so Friday is for wrapping it up.</dd></div>
+      </dl>
+      <p class="muted small">Anything an owner will review is ready two days ahead, so there's time to fix a number at its source.</p>
+    </div>
+    <div class="col"><h3>One place per shop</h3>
+      <p>Each shop gets one home: the launch summary (goals, baselines, who's who, dates), the feedback and expansion log, and the "what's new since kickoff" note.</p>
+      <p>Anyone on the team can pick up a shop mid-launch without a briefing call, and the Account Manager inherits the full story.</p>
+    </div>
+    <div class="col"><h3>What I'd automate first, with Claude</h3>
+      <ul>
+        <li>Call notes that draft an update to the launch summary, for me to review</li>
+        <li>Requests filed into the feedback log, tagged by type, shop and urgency</li>
+        <li>A draft "what's new since kickoff" note for each shop, built from release notes</li>
+        <li>Over time, simple queries that pull launch data straight into the board</li>
+      </ul>
+      <p class="muted small">Ideas to check with the team first. Each one hands time back to calls and building.</p>
+    </div>
+  </div>
+  <div class="built"><h3>Things I've built</h3>
+    <div class="bgrid">
+      <a href="https://pearlmcguire-gif.github.io/account-journey-dashboard" target="_blank" rel="noopener"><b>Account Journey Score demo</b><span>Scores account risk and value from the first discovery call onward, with adjustable weights. Live.</span></a>
+      <div><b>Voice of the Customer digest agent</b><span>Built with Bolter and Claude. Compiles tickets, feedback, open requests and roadmap statuses into one weekly digest for the product team, so time goes to review instead of compiling.</span></div>
+      <div><b>This page</b><span>Built with Claude, including the Launch board, its weekly triage and the terms practice mode.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="board">
+  <div class="eyebrow">Try it (optional)</div>
+  <h2>My Monday view: a Launch board</h2>
+  <p style="margin-top:8px">A Launch version of my <a href="https://pearlmcguire-gif.github.io/account-journey-dashboard" target="_blank" rel="noopener">Account Journey Score demo</a>. Eight fictional shops, each scored on five things at every stage they've reached. The "This week" list ranks who gets time first, based on the scores, flags and the next deadline. Move the sliders to change what matters most. The criteria and scoring guides stay off the page; the question behind each score is here.</p>
+  <div class="controls">
+    <div class="panel"><h3>How much each score matters</h3><div id="weights"></div><button class="btn" id="resetW" type="button" style="margin-top:6px">Reset to equal weights</button></div>
+    <div class="panel tri"><h3>This week, first</h3><ol id="triage"></ol></div>
+  </div>
+  <div class="dashhead"><b id="portCount">Shops</b>
+    <label>Sort <select id="sort"><option value="att">Needs attention first</option><option value="due">Next deadline first</option><option value="stg">Launch stage</option></select></label></div>
+  <div class="port" id="port"></div>
+  <div id="detail"></div>
+</section>
+
+<section id="terms">
+  <div class="eyebrow">Terms I'm learning</div>
+  <h2>Learning the language of the shop floor</h2>
+  <p style="margin-top:8px">Every term below came from Fulcrum's site or the public reviews I read. The definitions are in my own words, each linked to where I learned it. I built the practice mode for myself; you're welcome to quiz me.</p>
+  <div class="gtools">
+    <button class="btn" id="modeCards" type="button" aria-pressed="true">Flashcards</button>
+    <button class="btn" id="modeQuiz" type="button" aria-pressed="false">Quiz me</button>
+    <span class="muted" id="known" style="font-size:.9rem"></span>
+  </div>
+  <div id="cards" class="cards"></div>
+  <div id="quiz" class="quiz" hidden></div>
+  <div style="margin-top:40px" class="stack">
+    <div class="eyebrow">What I'd validate with your team first</div>
+    <h3 style="font-size:1.35rem">This page is a set of hypotheses</h3>
+    <ol class="learn">
+      <li>How a Sales handoff reaches a Launch Manager, and what gets read first.</li>
+      <li>How Launch Managers decide which shop gets time first in a busy week.</li>
+      <li>Which setup issues come up most, and how they reach Engineering.</li>
+      <li>How customer feedback reaches Product and Marketing.</li>
+      <li>What a typical launch timeline looks like for a small shop versus a medium one.</li>
+    </ol>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  All shops, people and figures on the Launch board are fictional. Fulcrum's Launch phase and module names come from fulcrumpro.com; the stages around them are my proposal. Built by Pearl McGuire with Claude. Account Journey Score concept and framework © 2026 Pearl McGuire. This page uses PostHog, without cookies, to count which parts get used.
+</div></footer>
+
+<!-- Content and sample data live here, apart from the layout, so real records can replace them later -->
+<script type="application/json" id="data">
+{
+"stages":[
+ {"id":"handoff","f":false,"name":"Sales handoff","src":"Proposed","goal":"Launch starts with the shop's goals already written down, so nobody has to rediscover them.",
+  "owners":["Account Executive","Launch Manager"],
+  "hands":["The shop's top three goals, each with a starting number","Who signs, who runs the floor, who owns the data","Modules sold, and modules discussed but held for later"],
+  "watch":["Goals described only as \"get off spreadsheets\"","One contact for everything"],
+  "hes":"\"We already told your salesperson all of this.\"",
+  "say":"Yes, you did, and I've gone through it. I just want to be sure nothing has changed since those conversations. Now that we're a little further into the process, I'd like to realign so we're still working toward the same goals.",
+  "ask":"If this goes perfectly, what will be different on the floor in six months?"},
+ {"id":"define","f":true,"name":"Define","src":"Fulcrum Launch phase: align on goals, learn how the shop runs, configure the foundation","goal":"Agree on what success looks like, and how the shop really works today.",
+  "owners":["Launch Manager","Shop's project owner"],
+  "hands":["Success measures with baselines","How a job moves today, from quote to shipped","A named owner on the shop's side, with time set aside"],
+  "watch":["No named owner with time for the project","Goals that change from call to call"],
+  "hes":"The owner wants Fulcrum set up to copy today's process exactly, workarounds included.",
+  "say":"It's your shop, and you know it better than I do. If we rebuild the old workaround in Fulcrum, though, the same delays will follow you into the new system. Can we try the simpler way on one job first?",
+  "ask":"Walk me through one job from quote to shipped. Where does it slow down?"},
+ {"id":"build","f":true,"name":"Build","src":"Fulcrum Launch phase: migrate and validate core data, build key workflows","goal":"Clean, structured data in Fulcrum, and the most important workflows built.",
+  "owners":["Launch Manager","Shop's data owner"],
+  "hands":["Validated bills of materials (BOMs), routings and inventory","A list of workflows built, and ones deferred"],
+  "watch":["Data prep running behind plan (public reviews mention restructuring flat BOMs taking real time)","One person doing all the data work"],
+  "hes":"\"Let's load the data as it is and clean it up later.\"",
+  "say":"That's your call. If the BOMs go in flat, your job costs will still be off after go-live, and that's the number you told me matters most. I'll sit with whoever knows the routings best and we'll do it together.",
+  "ask":"Which part of your data do you trust least?"},
+ {"id":"validate","f":true,"name":"Validate","src":"Fulcrum Launch phase: test real scenarios, connect integrations, day-in-the-life runs","goal":"The shop proves the system works on its own real jobs.",
+  "owners":["Launch Manager","Shop floor leads","Engineering, for setup issues"],
+  "hands":["Day-in-the-life test results","Integrations confirmed (accounting, shipping, sales tools)","Setup issues sent to Engineering already reproduced, with steps, screenshots or video, browser and device"],
+  "watch":["Testing done by managers only, not the people running jobs","Accounting integration questions left open (a theme in public reviews)"],
+  "hes":"Managers want to test it themselves and keep the floor focused on production.",
+  "say":"I understand protecting the floor's time. If the people running the jobs don't test it now, we'll find their problems after go-live, when they cost more to fix. Two people, one afternoon.",
+  "ask":"Which job would you be nervous to run through the system first? Let's test that one."},
+ {"id":"launch","f":true,"name":"Launch","src":"Fulcrum Launch phase: role-based training, go-live support","goal":"Everyone trained for their role, and the shop running live.",
+  "owners":["Launch Manager","Support","Account Manager (introduced)"],
+  "hands":["Training by role, including how to read the shop's own results","A launch summary: goals, baselines, who's who, open requests, the feedback log"],
+  "watch":["Spreadsheets kept running alongside \"just in case\"","Training gaps for one specific role"],
+  "hes":"\"We'll keep the spreadsheet going for a while, just to be safe.\"",
+  "say":"Keep it for a week if it helps. After that, two systems means two answers, and nobody trusts either one. Let's pick the date the spreadsheet retires.",
+  "ask":"What's still living in a spreadsheet, and why?"},
+ {"id":"refine","f":false,"name":"Refine","src":"Proposed","goal":"Fine-tune what's live, and show the first results against the baseline.",
+  "owners":["Launch Manager","Account Manager","Support"],
+  "hands":["First results compared with the baseline","Adoption by role","Refined workflows"],
+  "watch":["Usage going up with no measured result yet","Questions only ever going to Support"],
+  "hes":"\"Everything's working, we don't need more check-ins.\"",
+  "say":"Glad to hear it. Give me 20 minutes to check your first results against where you started, so you have the proof ready when someone asks whether it was worth it.",
+  "ask":"Which number from the start should we check together now?"},
+ {"id":"am","f":false,"name":"To Account Management","src":"Proposed","goal":"A warm handoff, so the shop never has to start over.",
+  "owners":["Launch Manager","Account Manager"],
+  "hands":["The launch summary and the feedback and expansion log","An introduction while Launch is still involved"],
+  "watch":["The Account Manager meeting the shop for the first time after Launch steps away"],
+  "hes":"\"We just got used to working with our Launch Manager.\"",
+  "say":"You're not losing anyone. I'll bring your Account Manager in while we're still working together, so they already know your goals and your shop.",
+  "ask":"Who on your side should the Account Manager meet first?"}
+],
+"dims":[
+ {"n":"Value","def":"A measurable goal, a benchmark, and evidence the shop is reaching it. Usage alone doesn't count.","q":"What will the shop measure in six months, and against what starting number?"},
+ {"n":"Alignment","def":"Sales and Launch working from the same understanding of the shop's goals.","q":"Could Launch name the shop's top three goals before kickoff, without asking sales?"},
+ {"n":"Readiness","def":"Both sides ready: setup for the shop's own use, a named owner, data and integrations on schedule.","q":"Is there a named owner on the shop's side, and is the data ready for Build?"},
+ {"n":"Relationship","def":"How many contacts are established, at which levels: a champion with a backup, an executive sponsor.","q":"Besides our champion, who would pick up the phone?"},
+ {"n":"Stability","def":"Changes at the shop that could change the picture: people leaving, restructuring, budget freezes.","q":"What's changing at the shop this year: people, customers, machines, systems?"}
+],
+"shops":[
+ {"n":"Ridgeline Precision","i":"CNC machine shop","st":5,"due":12,"ms":"First-results review","s":[[4,4,4,3,4],[4,5,4,4,4],[5,4,5,4,4],[5,4,5,4,4],[5,4,4,4,4],[5,4,4,4,4]],
+  "goals":[["On-time delivery","78%","92%","90%"],["Jobs with actual cost captured","Estimates only","100%","96%"]],
+  "flags":[["pos","Named project owner from the first Define call"],["pos","Asked about Quality Control in Define; held for later"]],
+  "log":[["Quality Control module","Held at Define"],["Weekly owner report (Archie Builder idea)","Raised in training"]],
+  "next":[["Launch Manager","Review on-time delivery with the owner against the 78% baseline"],["Account Manager","Join the review and take over the feedback log"]],
+  "ser":{"u":[20,45,60,68,72,75],"v":[10,30,50,62,70,78]}},
+ {"n":"Copperleaf Fabrication","i":"Sheet metal fabricator","st":5,"due":30,"ms":"Handoff to Account Management","s":[[4,5,4,4,4],[5,5,4,4,4],[5,5,5,4,4],[5,4,5,5,4],[5,5,5,5,5],[5,5,5,5,5]],
+  "goals":[["Quote turnaround","3 days","1 day","Same day"],["On-time delivery","82%","95%","96%"]],
+  "flags":[["pos","Owner asked about bringing a second building onto Fulcrum"],["pos","A feature the shop requested shipped and is in use"]],
+  "log":[["Second building","Raised at Refine"],["Grouped Work for nesting","Live since Launch"]],
+  "next":[["Launch Manager","Introduce the Account Manager with the results summary"],["Marketing","Ask the owner about a customer story"]],
+  "ser":{"u":[25,50,65,75,80,85],"v":[15,40,60,75,85,92]}},
+ {"n":"Basin Street Machining","i":"CNC machine shop","st":2,"due":4,"ms":"Data upload deadline","s":[[3,3,2,2,4],[3,3,2,2,4],[3,3,2,2,4]],
+  "goals":[["On-time delivery","Not measured yet","Set at Define","Baseline pending"]],
+  "flags":[["warn","BOMs are flat and need restructuring before Build can finish"],["warn","The owner is also the project owner and runs the floor"]],
+  "log":[["Purchase Planning","Mentioned in sales"]],
+  "next":[["Launch Manager","Offer a data prep working session with whoever knows the routings best"],["Account Executive","Confirm the goals from sales with the owner"]],
+  "ser":{"u":[5,12,15,0,0,0],"v":[0,5,8,0,0,0]}},
+ {"n":"Northfork Metalworks","i":"Sheet metal fabricator","st":3,"due":9,"ms":"Day-in-the-life test","s":[[4,4,4,2,4],[4,4,4,2,4],[4,4,4,2,4],[4,4,4,2,3]],
+  "goals":[["Jobs tracked live on the floor","Paper and spreadsheets","Every job","Pilot area only"]],
+  "flags":[["warn","One champion and no backup contact"],["warn","People on the floor haven't run a day-in-the-life test yet"]],
+  "log":[["Shipping integration","Asked about in Validate"]],
+  "next":[["Launch Manager","Run a day-in-the-life test with two people from the floor"],["Launch Manager","Ask the champion to introduce a backup before go-live"]],
+  "ser":{"u":[10,25,40,45,0,0],"v":[5,15,25,30,0,0]}},
+ {"n":"Tallgrass Aerospace Components","i":"CNC machine shop, AS9100D","st":4,"due":6,"ms":"Go-live","s":[[4,4,4,4,4],[4,4,5,4,4],[4,4,5,4,4],[4,4,5,4,4],[4,4,4,3,2]],
+  "goals":[["Nonconformance reports closed on time","Not tracked","90%","Tracking started"]],
+  "flags":[["warn","The quality manager, a key contact, left last month"],["pos","Interested in nonconformance tracking in Quality Control"]],
+  "log":[["Quality Control: nonconformance tracking","Raised in Launch"]],
+  "next":[["Launch Manager","Train the new quality lead before go-live"],["Engineering","Confirm the integration fix from Validate is released"]],
+  "ser":{"u":[20,45,60,65,62,60],"v":[10,35,50,58,60,61]}},
+ {"n":"Ironwood Tool and Die","i":"Machine shop","st":5,"due":20,"ms":"First-results review","s":[[2,3,4,4,4],[2,3,4,4,4],[2,4,5,4,4],[2,4,5,4,4],[2,4,4,4,4],[2,4,4,4,4]],
+  "goals":[["Job costing accuracy","No baseline set","Set at handoff","Can't be shown yet"]],
+  "flags":[["warn","Usage is high, but no baseline was set, so results can't be shown"],["info","The team likes the scheduling; value is still unproven to the owner"]],
+  "log":[["Demand Planning","Mentioned at Refine"]],
+  "next":[["Launch Manager","Rebuild a baseline from the shop's first month of job cost data"],["Product","Share the reporting request raised in training"]],
+  "ser":{"u":[30,60,80,88,92,95],"v":[10,15,20,22,25,26]}},
+ {"n":"Silver Creek Fab","i":"Sheet metal fabricator","st":0,"due":5,"ms":"Kickoff","s":[[3,2,3,3,4]],
+  "goals":[["Top three goals","To confirm before kickoff","",""]],
+  "flags":[["warn","Goals not written down yet at the handoff"],["info","The shop mentioned ITAR work, so data access needs planning in Define"]],
+  "log":[["Quoting and Sales Orders","Discussed, held for later"]],
+  "next":[["Account Executive","Write down the top three goals with Launch before kickoff"],["Launch Manager","Plan access controls for ITAR work in Define"]],
+  "ser":{"u":[0,0,0,0,0,0],"v":[0,0,0,0,0,0]}},
+ {"n":"Harbor Point Precision","i":"CNC machine shop","st":1,"due":15,"ms":"Define sign-off","s":[[4,4,3,3,4],[4,4,3,4,4]],
+  "goals":[["Shop-floor labor captured live","End-of-day timesheets","Every job","Not started"]],
+  "flags":[["warn","Accounting integration questions came up early"],["pos","Owner and shop manager both join every call"]],
+  "log":[["Custom shipping report","Raised in Define"]],
+  "next":[["Launch Manager","Map the accounting questions before Build starts"],["Support","Share the accounting integration guide with the bookkeeper"]],
+  "ser":{"u":[5,15,0,0,0,0],"v":[0,5,0,0,0,0]}}
+],
+"terms":[
+ ["Job shop","A manufacturer that makes custom parts in small batches for many different customers, so almost every job is different.","https://www.cleverence.com/articles/for-business/what-is-job-shop-manufacturing-4827/"],
+ ["CNC (computer numerical control)","Machine tools such as mills and lathes that run from programmed instructions instead of being operated by hand.","https://en.wikipedia.org/wiki/Numerical_control"],
+ ["BOM (bill of materials)","The list of every raw material, part and sub-assembly needed to make a product, with quantities.","https://www.techtarget.com/enterprise-software/definition/What-is-a-bill-of-materials-BOM"],
+ ["Multilevel BOM","A BOM set up as a tree, where each sub-assembly has its own components underneath it. A flat BOM lists everything on one level.","https://www.arenasolutions.com/resources/glossary/multilevel-bom/"],
+ ["Routing","The ordered list of operations a part goes through, with the machine or work center and the time for each step.","https://katanamrp.com/blog/routing-manufacturing"],
+ ["Nesting","Laying out parts on a sheet of material so as much of it is used as possible and less is wasted.","https://en.wikipedia.org/wiki/Nesting_(process)"],
+ ["Job costing","Tracking the actual labor, material and overhead spent on each individual job, to see what it really cost.","https://en.wikipedia.org/wiki/Job_costing"],
+ ["Capable-to-promise","Promising a delivery date based on whether materials and production capacity will actually be available, not only what's in stock.","https://www.planettogether.com/aps/capable-to-promise"],
+ ["Nonconformance report","A record that a part or process didn't meet its requirements: what was found, and what's being done about it.","https://simplerqms.com/non-conformance-report/"],
+ ["AS9100D","The quality management standard for aviation, space and defense organizations, built on ISO 9001.","https://saemobilus.sae.org/standards/as9100d-quality-management-systems-requirements-aviation-space-defense-organizations"],
+ ["ITAR (International Traffic in Arms Regulations)","US rules that control the export of defense-related items and technical data, including who is allowed to access that data.","https://www.law.cornell.edu/wex/international_traffic_in_arms_regulations_%28itar%29"]
+]
+}
+</script>
+
+<script>
+const D=JSON.parse(document.getElementById("data").textContent);
+const STAGES=D.stages,DIMS=D.dims,A=D.shops,T=D.terms;
+const COLS=["Handoff","Define","Build","Validate","Launch","Refine"];
+const $=s=>document.querySelector(s);
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const li=a=>"<ul>"+a.map(x=>"<li>"+esc(x)+"</li>").join("")+"</ul>";
+
+/* journey */
+let cur="handoff",hl=-1;
+function strip(){
+ $("#strip").innerHTML=STAGES.map((s,i)=>`<button class="step ${s.f?"f":""}" type="button" data-id="${s.id}" aria-pressed="${s.id===cur}"><small>${i+1}</small><strong>${esc(s.name)}</strong></button>`).join("");
+ $("#strip").querySelectorAll(".step").forEach(b=>b.onclick=()=>{cur=b.dataset.id;strip();showCard()});
+}
+function card(s){
+ const i=STAGES.indexOf(s);
+ const foot=i<6?`<a class="btn solid" href="#board" data-col="${i}">See this stage on the board</a>`:"";
+ return `<article class="card"><header><h3>${i+1}. ${esc(s.name)}</h3><span class="src">${esc(s.src)}</span></header>
+ <p style="margin-bottom:14px"><b>Goal:</b> ${esc(s.goal)}</p>
+ <div class="grid2">
+  <div class="talk"><div class="field"><h4>Where the owner may hesitate</h4></div><p class="hes">${esc(s.hes)}</p><div class="field"><h4>What I'd say</h4></div><blockquote>${esc(s.say)}</blockquote></div>
+  <div class="field"><h4>Owners</h4>${li(s.owners)}</div>
+  <div class="field"><h4>Hands over</h4>${li(s.hands)}</div>
+  <div class="field"><h4>Watch for</h4>${li(s.watch)}</div>
+  <div class="field"><h4>One question I'd ask</h4><p>${esc(s.ask)}</p></div>
+ </div>
+ <div class="cardfoot">${foot}</div></article>`;
+}
+function wire(root){root.querySelectorAll("[data-col]").forEach(a=>a.onclick=()=>{hl=+a.dataset.col;renderDetail()})}
+function showCard(){$("#stageCard").innerHTML=card(STAGES.find(s=>s.id===cur));wire($("#stageCard"))}
+$("#showAll").onclick=()=>{const el=$("#allCards");el.hidden=!el.hidden;$("#showAll").textContent=el.hidden?"Show every stage":"Hide the full list";if(!el.hidden){el.innerHTML=STAGES.map(card).join("");wire(el)}};
+
+/* board */
+let W=[3,3,3,3,3],sel=0;
+function scoreOf(a){const l=a.s[a.s.length-1];const t=W.reduce((x,y)=>x+y,0)||1;return l.reduce((x,v,i)=>x+v*W[i],0)/t}
+function status(v){return v>=4?["good","Strong"]:v>=3?["warn","Steady"]:["bad","Needs attention"]}
+function priority(a){const v=scoreOf(a);const warns=a.flags.filter(f=>f[0]==="warn").length;return (5-v)*2+(a.due<=7?3:a.due<=14?1:0)+warns}
+function why(a){const r=[];if(a.due<=7)r.push(`${esc(a.ms)} in ${a.due} days`);else r.push(`${esc(a.ms)} in ${a.due} days`);const w=a.flags.find(f=>f[0]==="warn");if(w)r.push(esc(w[1]).toLowerCase());if(scoreOf(a)<3)r.push("score below 3");return r.join(" · ")}
+function weights(){
+ $("#weights").innerHTML=DIMS.map((d,i)=>`<div class="wrow"><label for="w${i}">${d.n}</label><input id="w${i}" type="range" min="0" max="5" value="${W[i]}"><output id="o${i}">${W[i]}</output><div class="q">${esc(d.q)}</div></div>`).join("");
+ DIMS.forEach((d,i)=>$("#w"+i).oninput=e=>{W[i]=+e.target.value;$("#o"+i).textContent=W[i];refresh()});
+}
+$("#resetW").onclick=()=>{W=[3,3,3,3,3];weights();refresh()};
+function triage(){
+ const top=A.map((a,i)=>i).sort((x,y)=>priority(A[y])-priority(A[x])).slice(0,3);
+ $("#triage").innerHTML=top.map(i=>{const a=A[i];return `<li><b>${esc(a.n)}</b><span class="muted">${esc(a.next[0][1])}</span><div class="why">${why(a)}</div></li>`}).join("");
+}
+function port(){
+ const order=A.map((a,i)=>i);const m=$("#sort").value;
+ order.sort((x,y)=>m==="att"?scoreOf(A[x])-scoreOf(A[y]):m==="due"?A[x].due-A[y].due:A[x].st-A[y].st);
+ const att=A.filter(a=>scoreOf(a)<3.5).length;
+ $("#portCount").textContent=`8 shops · ${att} needing attention`;
+ $("#port").innerHTML=order.map(i=>{const a=A[i],v=scoreOf(a),[c,l]=status(v);
+  return `<button class="acct" type="button" data-i="${i}" aria-pressed="${i===sel}"><span class="nm">${esc(a.n)}</span><span class="meta">${esc(a.i)} · ${COLS[a.st]} · ${esc(a.ms)} in ${a.due} days</span><span class="sc"><b>${v.toFixed(1)}</b><span class="pill ${c}">${l}</span></span><span class="stagebar">${COLS.map((x,k)=>`<i class="${k<=a.st?"on":""}"></i>`).join("")}</span></button>`}).join("");
+ $("#port").querySelectorAll(".acct").forEach(b=>b.onclick=()=>{sel=+b.dataset.i;port();renderDetail()});
+}
+$("#sort").onchange=port;
+function spark(s){
+ if(!s.u.some(x=>x>0))return `<p class="muted" style="font-size:.85rem">No usage yet. The shop is still at the handoff.</p>`;
+ const pts=s.u.filter((x,i)=>i===0||x>0||s.v[i]>0).length,n=Math.max(pts,2),x=i=>10+i*(280/(n-1)),y=v=>62-v*0.55;
+ const path=a=>a.slice(0,n).map((v,i)=>(i?"L":"M")+x(i).toFixed(1)+" "+y(v).toFixed(1)).join(" ");
+ return `<svg class="spark" viewBox="0 0 300 70" role="img" aria-label="Usage compared with value since kickoff"><line x1="10" y1="62" x2="290" y2="62" stroke="var(--line)"/><path d="${path(s.u)}" fill="none" stroke="var(--lav)" stroke-width="2"/><path d="${path(s.v)}" fill="none" stroke="var(--accent)" stroke-width="2.5"/><circle cx="${x(n-1)}" cy="${y(s.v[n-1])}" r="3.5" fill="var(--accent)"/></svg><div class="key"><span><i style="background:var(--lav)"></i>Usage</span><span><i style="background:var(--accent)"></i>Value against the baseline</span></div>`;
+}
+function renderDetail(){
+ const a=A[sel],v=scoreOf(a),[c,l]=status(v);
+ const head=COLS.map((x,k)=>`<th class="${k===hl?"hl":""}">${x}</th>`).join("");
+ const rows=DIMS.map((d,i)=>`<tr><td title="${esc(d.def)}">${d.n}</td>`+COLS.map((x,k)=>{const sc=a.s[k],h=k===hl?"hl":"";return sc?`<td class="c s${sc[i]} ${h}">${sc[i]}</td>`:`<td class="na ${h}">·</td>`}).join("")+"</tr>").join("");
+ const goals=a.goals.map(g=>g[2]?`<div class="goal"><b>${esc(g[0])}</b><br><span>Start ${esc(g[1])} · Target ${esc(g[2])} · Now ${esc(g[3])}</span></div>`:`<div class="goal"><b>${esc(g[0])}</b><br><span>${esc(g[1])}</span></div>`).join("");
+ $("#detail").innerHTML=`<article class="detail"><div class="top"><div><h3>${esc(a.n)}</h3><span class="muted">${esc(a.i)} · next: ${esc(a.ms)} in ${a.due} days</span></div><div><b style="font-size:1.5rem">${v.toFixed(1)}</b> <span class="pill ${c}">${l}</span></div></div>
+ <div class="detgrid"><div class="mini"><h4>Score at every stage</h4><div class="tbl"><table><thead><tr><th>Score</th>${head}</tr></thead><tbody>${rows}</tbody></table></div>
+ ${hl>=0?`<p class="muted" style="font-size:.8rem;margin-top:6px">Outlined: the ${COLS[hl]} stage you came from.</p>`:""}
+ <h4>Usage compared with value</h4>${spark(a.ser)}</div>
+ <div class="mini"><h4>Goals being tracked</h4>${goals}<h4>Flags</h4>${a.flags.map(f=>`<div class="flag ${f[0]}"><i></i><span>${esc(f[1])}</span></div>`).join("")}
+ <h4>Feedback and expansion log</h4><ul>${a.log.map(x=>`<li>${esc(x[0])} <span class="muted">(${esc(x[1])})</span></li>`).join("")}</ul>
+ <h4>Next step by team</h4>${a.next.map(t=>`<div class="team"><b>${esc(t[0])}</b><span>${esc(t[1])}</span></div>`).join("")}</div></div></article>`;
+}
+function refresh(){triage();port();renderDetail()}
+
+/* glossary */
+const knownSet=new Set();
+try{JSON.parse(localStorage.getItem("ftk")||"[]").forEach(x=>knownSet.add(x))}catch(e){}
+function saveKnown(){try{localStorage.setItem("ftk",JSON.stringify([...knownSet]))}catch(e){}}
+function knownCount(){$("#known").textContent=`${knownSet.size} of ${T.length} reviewed`}
+function front(t){return `<span class="t">${esc(t[0])}</span><span class="hint">Tap to see the definition</span>`}
+function cards(){
+ $("#cards").innerHTML=T.map((t,i)=>`<button class="fc" type="button" data-i="${i}">${front(t)}</button>`).join("");
+ $("#cards").querySelectorAll(".fc").forEach(b=>b.onclick=e=>{if(e.target.tagName==="A")return;const i=+b.dataset.i,t=T[i];
+  if(b.classList.toggle("flipped")){knownSet.add(i);saveKnown();b.innerHTML=`<span class="t">${esc(t[0])}</span><span class="d">${esc(t[1])}</span><a class="hint" href="${t[2]}" target="_blank" rel="noopener">Where I learned it</a>`}else b.innerHTML=front(t);knownCount()});
+ knownCount();
+}
+let qs={n:0,right:0};
+function quiz(){
+ const i=Math.floor(Math.random()*T.length),opts=[i];while(opts.length<4){const r=Math.floor(Math.random()*T.length);if(!opts.includes(r))opts.push(r)}opts.sort(()=>Math.random()-.5);
+ $("#quiz").innerHTML=`<div class="muted" style="font-size:.85rem">Question ${qs.n+1} · ${qs.right} right so far</div><p style="margin-top:6px;font-size:1.05rem"><b>Which term matches?</b> ${esc(T[i][1])}</p><div class="opts">${opts.map(o=>`<button type="button" data-o="${o}">${esc(T[o][0])}</button>`).join("")}</div><div id="qafter" style="margin-top:12px" hidden><button class="btn solid" type="button" id="qnext">Next question</button></div>`;
+ $("#quiz").querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{if(!$("#qafter").hidden)return;const ok=+b.dataset.o===i;b.classList.add(ok?"right":"wrong");if(!ok)$(`#quiz [data-o="${i}"]`).classList.add("right");qs.n++;if(ok)qs.right++;$("#qafter").hidden=false;$("#qnext").onclick=quiz});
+}
+$("#modeCards").onclick=()=>{$("#modeCards").setAttribute("aria-pressed","true");$("#modeQuiz").setAttribute("aria-pressed","false");$("#cards").hidden=false;$("#quiz").hidden=true};
+$("#modeQuiz").onclick=()=>{$("#modeQuiz").setAttribute("aria-pressed","true");$("#modeCards").setAttribute("aria-pressed","false");$("#cards").hidden=true;$("#quiz").hidden=false;quiz()};
+
+strip();showCard();weights();refresh();cards();
+</script>
+
+<script>
+/* PostHog: counts page views and clicks, no cookies, no session recording */
+const CONFIG={posthogKey:"phc_s65M8H7Wxc7P4FTMWaFFJHGKcZ8xnUoYv8ddcUES2EdE",posthogHost:"https://eu.i.posthog.com"};
+(function(){const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/posthog-js@1.438.8/dist/array.full.js";s.async=true;
+s.onload=()=>{try{posthog.init(CONFIG.posthogKey,{api_host:CONFIG.posthogHost,persistence:"memory",person_profiles:"identified_only",capture_pageview:true,autocapture:true,disable_session_recording:true});posthog.register({page_name:"launch-playbook"})}catch(e){}};
+document.head.appendChild(s)})();
+</script>
+</body>
+</html>
