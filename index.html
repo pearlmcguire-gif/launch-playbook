@@ -56,17 +56,20 @@ nav.top a{text-decoration:none;font-size:.9rem;font-weight:500}
 .layers{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-size:.9rem}
 
 /* stories */
-.stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:20px}
-@media (max-width:760px){.stories{grid-template-columns:minmax(0,1fr)}}
-.story{border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.stories{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:24px}
+.story{border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:12px 32px;min-width:0}
+@media (max-width:760px){.story{grid-template-columns:minmax(0,1fr);padding:20px}}
+.shead{display:flex;flex-direction:column;gap:6px}
 .story .kind{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.story h3{font-size:1.3rem}
 .story .co{font-size:.85rem;color:var(--muted)}
-.story dl{margin:0;display:grid;gap:8px}
-.story dt{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
-.story dd{margin:0}
-.story .result{background:var(--soft);border-radius:8px;padding:10px 12px}
-.also{border-left:3px solid var(--lav);padding-left:14px;margin-top:20px}
-
+.beats{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.beats li{line-height:1.6}
+.beat{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:2px}
+.story details{grid-column:1/-1;border-top:1px solid var(--line);padding-top:12px}
+.story summary{cursor:pointer;color:var(--accent);font-weight:500;font-size:.92rem}
+.full{display:grid;gap:12px;margin-top:12px;max-width:68ch;line-height:1.65}
+.also{border-left:3px solid var(--lav);padding-left:16px;margin-top:28px;display:grid;gap:6px}
 /* journey */
 .strip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:20px}
 @media (max-width:760px){.strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -216,54 +219,32 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;font-size:.82rem
 <section id="stories">
   <div class="eyebrow">How I work</div>
   <h2>Four stories</h2>
+  <p class="muted" style="margin-top:6px">The short version of each is below. Open any story for the details.</p>
   <div class="stories">
-    <article class="story" id="s-malls">
-      <span class="kind">Rolled up my sleeves</span>
-      <h3>Seven malls, one date that couldn't move</h3>
-      <span class="co">MappedIn, an indoor mapping platform · implementation owner (contractor)</span>
-      <dl>
-        <div><dt>The situation</dt><dd>A major mall operator in Thailand was rolling out MappedIn across seven malls, timed to a big celebration at its largest mall. There was no room for extensions.</dd></div>
-        <div><dt>What made it hard</dt><dd>The client had very specific needs, many beyond what the product did at the time: a long list of feature requests, and late-night and early-morning calls.</dd></div>
-        <div><dt>What I did</dt><dd>I prioritized the two to three most urgent malls to go live first. I ran the project with the client's project manager and their 5-7 person team, while coordinating our Solutions, Data and Development teams. When Development needed details on the data-imports API that I couldn't give them, I brought the Data team into those calls directly.</dd></div>
-      </dl>
-      <p class="result"><b>How it worked:</b> the flagship mall went live on time, and a mock preview reached the client company's President early.</p>
+<article class="story" id="s-malls">
+      <div class="shead"><span class="kind">Rolled up my sleeves</span><h3>Seven malls, one date that couldn't move</h3><span class="co">MappedIn, an indoor mapping platform · implementation owner</span></div>
+      <ul class="beats"><li><span class="beat">Challenge</span>A seven-mall rollout tied to a celebration date, with no extensions.</li><li><span class="beat">What I did</span>Put the two to three most urgent malls first, and ran the client's team and three of ours.</li><li><span class="beat">Result</span>The flagship mall went live on time.</li></ul>
+      <details><summary>Read the full story</summary><div class="full"><p>A major mall operator in Thailand was rolling out MappedIn across seven malls, timed to a big celebration at its largest mall.</p><p>The client had very specific needs, many beyond what the product did at the time: a long list of feature requests, and late-night and early-morning calls.</p><p>I worked with the client's project manager and their 5-7 person team, while coordinating our Solutions, Data and Development teams. When Development needed details on the data-imports API that I couldn't give them, I brought the Data team into those calls directly.</p><p>A mock preview also reached the client company's President early.</p></div></details>
     </article>
-    <article class="story" id="s-bot">
-      <span class="kind">Rolled up my sleeves</span>
-      <h3>Answers around the clock</h3>
-      <span class="co">Eptura (formerly Proxyclick), a visitor management platform · Customer Success</span>
-      <dl>
-        <div><dt>The situation</dt><dd>Our support team covered Europe, Middle East and Africa (EMEA) and US hours. Clients in Asia-Pacific were mostly on their own during their workday.</dd></div>
-        <div><dt>What I did</dt><dd>I built Proxyclick's AI Help Center bot in Intercom from zero. I researched the questions clients asked most, then wrote the bot's content and macro templates that suggested articles automatically. It walked clients through step-by-step fixes, helped them troubleshoot, and sent them to the right article or video. As part of the same project I built a macro and prompt library for the support team.</dd></div>
-      </dl>
-      <p class="result"><b>How it worked:</b> 40% of inquiries were resolved through AI chat and self-service, and the library cut second-tier escalations by 60%. Asia-Pacific clients had answers across almost all of the hours our team didn't cover. The project led to me owning all Help Center and academy content.</p>
+<article class="story" id="s-bot">
+      <div class="shead"><span class="kind">Rolled up my sleeves</span><h3>Answers around the clock</h3><span class="co">Eptura (formerly Proxyclick), a visitor management platform · Customer Success</span></div>
+      <ul class="beats"><li><span class="beat">Challenge</span>Support covered Europe and US hours. Asia-Pacific clients were mostly on their own.</li><li><span class="beat">What I did</span>Built an AI Help Center bot in Intercom, plus a macro library for the support team.</li><li><span class="beat">Result</span>40% of inquiries resolved through chat and self-service, and 60% fewer second-tier escalations.</li></ul>
+      <details><summary>Read the full story</summary><div class="full"><p>I researched the questions clients asked most, then wrote the bot's content and the macro templates that suggested articles automatically.</p><p>The bot walked clients through step-by-step fixes, helped them troubleshoot, and sent them to the right article or video.</p><p>Asia-Pacific clients had answers across almost all of the hours our team didn't cover. The project led to me owning all Help Center and academy content.</p></div></details>
     </article>
-    <article class="story" id="s-change">
-      <span class="kind">When a client didn't want to change</span>
-      <h3>Moving a happy client to something new</h3>
-      <span class="co">MappedIn · self-serve platform launch (contractor)</span>
-      <dl>
-        <div><dt>The situation</dt><dd>MappedIn was launching a new self-serve platform, and our VP asked me to step in on the project. One client on my list ran a single-level outdoor outlet mall on our older Enterprise system. Not the ideal customer profile, but they liked the product.</dd></div>
-        <div><dt>Why they hesitated</dt><dd>Getting them on a call took a while. Once they joined, there were two reasons: they didn't want to take on the work of switching, and they were reviewing budgets, so any change in fees made them nervous.</dd></div>
-        <div><dt>What I did</dt><dd>I took the work off their plate. I had already built their map on the new platform, I set up their location myself, and since their contract was current, I gave them access so they could jump in and try it. I built a demo they could take back to their marketing and leadership teams. On budget, we were clear: they could keep their current setup, but they'd pay roughly two to three times more than on self-serve, and that cost would only keep growing and cause problems with their finance team. Self-serve would be much easier on their budget and on their teams. When they found missing features, I took the requests to Product.</dd></div>
-      </dl>
-      <p class="result"><b>How it worked:</b> they chose the new self-serve map, even without the exact same feature set, because it covered what they needed. It also let them map beyond their property line, so they could add parking, driveways and directions from the highway as construction at the far end of their lot went up.</p>
+<article class="story" id="s-change">
+      <div class="shead"><span class="kind">When a client didn't want to change</span><h3>Moving a happy client to something new</h3><span class="co">MappedIn · self-serve platform launch</span></div>
+      <ul class="beats"><li><span class="beat">Challenge</span>A client on our older system didn't want the work of switching, and budgets were under review.</li><li><span class="beat">What I did</span>Built their map and setup in advance, gave them access, and made a demo for their leadership.</li><li><span class="beat">Result</span>They moved to self-serve, which fit their changed budget.</li></ul>
+      <details><summary>Read the full story</summary><div class="full"><p>Our VP asked me to step in on the self-serve launch. This client ran a single-level outdoor outlet mall. Not the ideal customer profile, but they liked the product.</p><p>Getting them on a call took a while. On budget, we were clear that staying on the older setup would keep costing more over time.</p><p>When they found missing features, I took the requests to Product. They chose the new map even without the exact same feature set, because it covered what they needed.</p><p>It also let them map beyond their property line, adding parking, driveways and directions from the highway as construction at the far end of their lot went up.</p></div></details>
     </article>
-    <article class="story" id="s-train">
-      <span class="kind">Teaching a client</span>
-      <h3>The training gap behind a complaint</h3>
-      <span class="co">Pathmonk, a website lead-conversion platform · sole Customer Success hire (contractor)</span>
-      <dl>
-        <div><dt>The situation</dt><dd>A client mentioned in an unrelated email, about updating their content, that their lead results were dropping.</dd></div>
-        <div><dt>What I found</dt><dd>Discovery showed nobody had taught them how to read their dashboard or calculate their return on investment. It was a training gap, not a results problem.</dd></div>
-        <div><dt>What I did</dt><dd>Their content was in the middle of an update, so instead of anchoring to an outdated baseline, we set new benchmarks together. Then I followed up on a set schedule over the next two to three months.</dd></div>
-      </dl>
-      <p class="result"><b>How it worked:</b> by the end, they could read and interpret the dashboard themselves.</p>
+<article class="story" id="s-train">
+      <div class="shead"><span class="kind">Teaching a client</span><h3>The training gap behind a complaint</h3><span class="co">Pathmonk, a website lead-conversion platform · sole Customer Success hire</span></div>
+      <ul class="beats"><li><span class="beat">Challenge</span>A client said their lead results were dropping.</li><li><span class="beat">What I found</span>Nobody had taught them to read their dashboard or calculate their return on investment.</li><li><span class="beat">Result</span>After two to three months of follow-ups, they could read their own results.</li></ul>
+      <details><summary>Read the full story</summary><div class="full"><p>They mentioned it in an unrelated email about updating their content.</p><p>Their content was mid-update, so instead of anchoring to an outdated baseline, we set new benchmarks together and I followed up on a set schedule.</p></div></details>
     </article>
   </div>
   <div class="also">
     <h3>And one I didn't let go of</h3>
-    <p style="margin-top:6px">At MappedIn I picked up an account flagged as challenging because its contacts weren't engaging. I dug into its history, found the real decision-maker, and within the first quarter had every thread going to the right people, contacts at more properties, account health up and two expansion conversations open.</p>
+    <p>At MappedIn I inherited an account flagged as challenging because its contacts weren't engaging. Within the first quarter I'd found the real decision-maker, and two expansion conversations opened.</p>
   </div>
 </section>
 
